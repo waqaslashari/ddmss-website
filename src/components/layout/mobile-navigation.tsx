@@ -9,6 +9,7 @@ export function MobileNavigation() {
   const [isOpen, setIsOpen] = useState(false);
   const navigationId = useId();
   const navigationRootRef = useRef<HTMLDivElement>(null);
+  const menuScrollRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -42,6 +43,10 @@ export function MobileNavigation() {
     };
 
     const previousOverflow = document.body.style.overflow;
+    if (menuScrollRef.current) {
+      menuScrollRef.current.scrollTop = 0;
+      menuScrollRef.current.scrollLeft = 0;
+    }
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", handleKeyDown);
 
@@ -60,7 +65,13 @@ export function MobileNavigation() {
         aria-controls={navigationId}
         aria-expanded={isOpen}
         aria-label={isOpen ? "Close navigation" : "Open navigation"}
-        onClick={() => setIsOpen((current) => !current)}
+        onClick={() => {
+          if (!isOpen && menuScrollRef.current) {
+            menuScrollRef.current.scrollTop = 0;
+            menuScrollRef.current.scrollLeft = 0;
+          }
+          setIsOpen((current) => !current);
+        }}
       >
         <span className="sr-only">{isOpen ? "Close navigation" : "Open navigation"}</span>
         <span className="relative block h-4 w-5" aria-hidden="true">
@@ -74,8 +85,9 @@ export function MobileNavigation() {
       </button>
 
       <div
+        ref={menuScrollRef}
         id={navigationId}
-        className={`fixed inset-0 z-10 bg-background-deep/98 px-(--page-gutter) pt-[calc(var(--header-height-scrolled)+3rem)] pb-8 backdrop-blur-2xl transition-[opacity,visibility] duration-200 ${
+        className={`fixed inset-0 z-10 overflow-y-auto overscroll-contain bg-background-deep/98 px-(--page-gutter) pt-[calc(var(--header-height-scrolled)+3rem)] pb-8 backdrop-blur-2xl transition-[opacity,visibility] duration-200 ${
           isOpen ? "visible opacity-100" : "invisible opacity-0"
         }`}
         aria-hidden={!isOpen}
@@ -84,7 +96,7 @@ export function MobileNavigation() {
         aria-label="Site navigation"
       >
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(166,179,191,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(166,179,191,0.035)_1px,transparent_1px)] bg-[size:3.5rem_3.5rem]" />
-        <nav className="relative flex h-full flex-col" aria-label="Mobile navigation">
+        <nav className="relative flex min-h-full flex-col" aria-label="Mobile navigation">
           <span className="mb-8 font-mono text-[0.6875rem] tracking-[0.16em] text-text-muted uppercase">
             Navigation / 01—06
           </span>

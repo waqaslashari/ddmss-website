@@ -15,6 +15,8 @@
   --blue: #397bff;
   --violet: #9b6cff;
   --status-green: #44e28a;
+  --cta-primary: color-mix(in srgb, var(--cyan) 58%, var(--blue));
+  --cta-primary-hover: color-mix(in srgb, var(--cyan) 76%, var(--blue));
 
   --border-default: rgba(255, 255, 255, 0.08);
   --border-active: rgba(39, 215, 255, 0.35);
@@ -45,6 +47,8 @@
   --color-accent-blue: var(--blue);
   --color-accent-violet: var(--violet);
   --color-status-green: var(--status-green);
+  --color-cta-primary: var(--cta-primary);
+  --color-cta-primary-hover: var(--cta-primary-hover);
   --font-sans: var(--font-manrope);
   --font-mono: var(--font-jetbrains-mono);
 }
@@ -79,6 +83,10 @@ button {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.primary-button {
+  color: var(--bg-deep);
 }
 
 button {
