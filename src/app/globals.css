@@ -1,26 +1,175 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-primary: #071019;
+  --bg-deep: #040a10;
+  --bg-panel: #0b1622;
+  --bg-panel-raised: #101e2b;
+
+  --text-primary: #f3f7fa;
+  --text-secondary: #a6b3bf;
+  --text-muted: #70818e;
+  --text-subtle: #465765;
+
+  --cyan: #27d7ff;
+  --blue: #397bff;
+  --violet: #9b6cff;
+  --status-green: #44e28a;
+
+  --border-default: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(39, 215, 255, 0.35);
+  --gradient-main: linear-gradient(
+    90deg,
+    #27d7ff 0%,
+    #397bff 55%,
+    #9b6cff 100%
+  );
+
+  --canvas-max: 90rem;
+  --content-max: 85rem;
+  --page-gutter: clamp(1.25rem, 4vw, 4.5rem);
+  --header-height: 6rem;
+  --header-height-scrolled: 4.75rem;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--bg-primary);
+  --color-background-deep: var(--bg-deep);
+  --color-panel: var(--bg-panel);
+  --color-panel-raised: var(--bg-panel-raised);
+  --color-foreground: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-subtle: var(--text-subtle);
+  --color-accent-cyan: var(--cyan);
+  --color-accent-blue: var(--blue);
+  --color-accent-violet: var(--violet);
+  --color-status-green: var(--status-green);
+  --font-sans: var(--font-manrope);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height-scrolled) + 1.5rem);
+  background: var(--bg-deep);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-width: 20rem;
+  background:
+    radial-gradient(circle at 78% 0%, rgba(57, 123, 255, 0.08), transparent 34rem),
+    var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-manrope), sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(39, 215, 255, 0.22);
+  color: var(--text-primary);
+}
+
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 4px;
+}
+
+.site-shell {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.content-container {
+  width: min(calc(100% - (var(--page-gutter) * 2)), var(--content-max));
+  margin-inline: auto;
+}
+
+.technical-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.72;
+}
+
+.technical-background::before {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(166, 179, 191, 0.034) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(166, 179, 191, 0.034) 1px, transparent 1px);
+  background-size: 5rem 5rem;
+  content: "";
+  mask-image: linear-gradient(to bottom, black 0%, transparent 82%);
+}
+
+.technical-background::after {
+  position: absolute;
+  top: 8rem;
+  right: max(var(--page-gutter), calc((100vw - var(--content-max)) / 2));
+  width: min(38vw, 32rem);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(39, 215, 255, 0.26));
+  box-shadow:
+    0 12rem 0 rgba(39, 215, 255, 0.05),
+    -48vw 24rem 0 rgba(155, 108, 255, 0.04);
+  content: "";
+}
+
+.gradient-text {
+  background: var(--gradient-main);
+  background-clip: text;
+  color: transparent;
+}
+
+@media (max-width: 47.999rem) {
+  :root {
+    --page-gutter: clamp(1.25rem, 5.5vw, 1.5rem);
+    --header-height: 5rem;
+    --header-height-scrolled: 4.5rem;
+  }
+
+  .technical-background::before {
+    background-size: 3.5rem 3.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }
