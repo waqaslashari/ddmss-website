@@ -1,0 +1,249 @@
+.ecosystem {
+  --pointer-x: 0;
+  --pointer-y: 0;
+  position: relative;
+  width: 100%;
+  max-width: 48rem;
+  margin-inline: auto;
+  aspect-ratio: 680 / 581;
+  isolation: isolate;
+  transform: scale(1.06);
+  transform-origin: center;
+}
+
+.ecosystem::before {
+  position: absolute;
+  inset: 11% 6% 8% 9%;
+  z-index: -1;
+  border: 1px solid rgba(255, 255, 255, 0.035);
+  background: linear-gradient(145deg, rgba(16, 30, 43, 0.16), transparent 55%);
+  content: "";
+  clip-path: polygon(0 18%, 46% 0, 100% 24%, 94% 100%, 12% 94%);
+}
+
+.scene {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.backLayer,
+.midLayer,
+.frontLayer,
+.coreLayer {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.backLayer {
+  transform: translate3d(calc(var(--pointer-x) * -4px), calc(var(--pointer-y) * -3px), 0);
+}
+
+.midLayer {
+  transform: translate3d(calc(var(--pointer-x) * 5px), calc(var(--pointer-y) * 4px), 0);
+}
+
+.frontLayer {
+  transform: translate3d(calc(var(--pointer-x) * 9px), calc(var(--pointer-y) * 7px), 0);
+}
+
+.coreLayer {
+  transform: translate3d(calc(var(--pointer-x) * 3px), calc(var(--pointer-y) * 2px), 0);
+}
+
+.flowLayer,
+.nodeLayer {
+  pointer-events: none;
+}
+
+.dataSystem {
+  filter: url("#ddmss-object-shadow");
+}
+
+.secondarySystem {
+  opacity: 0.76;
+}
+
+.physicalAsset {
+  filter: url("#ddmss-object-shadow");
+}
+
+.physicalAsset > path:first-of-type {
+  stroke: #397bff;
+  stroke-opacity: 0.3;
+}
+
+.primaryAsset > path:nth-of-type(2) {
+  stroke: #a6b3bf;
+  stroke-opacity: 0.34;
+}
+
+.basePath {
+  fill: none;
+  stroke: #397bff;
+  stroke-width: 1.1;
+  stroke-opacity: 0.2;
+  vector-effect: non-scaling-stroke;
+}
+
+.dataPath {
+  fill: none;
+  stroke: #27d7ff;
+  stroke-width: 1.35;
+  stroke-linecap: square;
+  stroke-dasharray: 3 10;
+  stroke-opacity: 0.78;
+  vector-effect: non-scaling-stroke;
+  animation: data-flow 8s linear infinite;
+}
+
+.dataPathDelay {
+  animation-delay: -3.5s;
+}
+
+.dataPathSlow {
+  animation-duration: 11s;
+  animation-delay: -6s;
+  stroke: #9b6cff;
+  stroke-opacity: 0.6;
+}
+
+.node,
+.nodeViolet {
+  fill: #27d7ff;
+  stroke: #071019;
+  stroke-width: 3;
+  filter: url("#ddmss-soft-glow");
+  animation: node-status 3.8s ease-in-out infinite;
+}
+
+.nodeViolet {
+  fill: #9b6cff;
+  animation-delay: -1.7s;
+}
+
+.coordinate,
+.labelStrong,
+.labelMuted,
+.coreLabel {
+  font-family: var(--font-jetbrains-mono), monospace;
+  text-transform: uppercase;
+}
+
+.coordinate {
+  fill: #465765;
+  font-size: 8px;
+  letter-spacing: 0.16em;
+}
+
+.labelStrong {
+  fill: #a6b3bf;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+}
+
+.labelMuted {
+  fill: #465765;
+  font-size: 7px;
+  letter-spacing: 0.1em;
+}
+
+.coreLabel {
+  fill: #f3f7fa;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+}
+
+.mobileCoreLabel {
+  display: none;
+}
+
+.mobileLabelGroup {
+  display: none;
+}
+
+.mobileLabel {
+  fill: #96a7b5;
+  stroke: #071019;
+  stroke-width: 1.5px;
+  paint-order: stroke fill;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@keyframes data-flow {
+  to {
+    stroke-dashoffset: -52;
+  }
+}
+
+@keyframes node-status {
+  0%,
+  100% {
+    opacity: 0.58;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 63.999rem) {
+  .ecosystem {
+    max-width: 42rem;
+  }
+}
+
+@media (max-width: 47.999rem) {
+  .ecosystem {
+    width: calc(100% + 2.5rem);
+    margin-inline: -1.25rem;
+    transform: none;
+  }
+
+  .coordinate,
+  .labelMuted,
+  .mobileSecondary,
+  .mobileKey,
+  .mobileCoreLabel,
+  .desktopCoreLabel {
+    display: none;
+  }
+
+  .mobileLabelGroup {
+    display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backLayer,
+  .midLayer,
+  .frontLayer,
+  .coreLayer {
+    transform: none;
+    transition: none;
+  }
+
+  .ecosystem {
+    transform: scale(1.06);
+  }
+
+  .dataPath,
+  .node,
+  .nodeViolet {
+    animation: none;
+  }
+}
+
+@media (max-width: 47.999rem) and (prefers-reduced-motion: reduce) {
+  .ecosystem {
+    transform: none;
+  }
+}

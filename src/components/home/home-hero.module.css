@@ -1,0 +1,71 @@
+.reveal {
+  animation: hero-reveal 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.eyebrow {
+  animation-delay: 80ms;
+}
+
+.headline {
+  display: grid;
+  row-gap: clamp(0.3125rem, 0.85vw, 0.75rem);
+  animation-delay: 150ms;
+  overflow: visible;
+}
+
+.gradientLine {
+  margin-bottom: -0.08em;
+  padding-bottom: 0.08em;
+}
+
+.copy {
+  animation-delay: 240ms;
+}
+
+.actions {
+  animation-delay: 320ms;
+}
+
+.systemLine {
+  animation-delay: 390ms;
+}
+
+.visual {
+  min-width: 0;
+  animation-delay: 220ms;
+}
+
+@keyframes hero-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 63.999rem) {
+  .visual {
+    width: min(100%, 44rem);
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 47.999rem) {
+  .visual {
+    margin-top: -1.25rem;
+  }
+
+  .systemLine {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    animation: none;
+  }
+}
