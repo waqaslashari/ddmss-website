@@ -1,4 +1,5 @@
 import { HomeHero } from "@/components/home/home-hero";
+import { IndustriesSection } from "@/components/home/industries-section";
 import { CapabilitiesSection } from "@/components/home/capabilities-section";
 import { DigitalTwinExperience } from "@/components/home/digital-twin-experience";
 import { OperatingModelSection } from "@/components/home/operating-model-section";
@@ -16,6 +17,7 @@ export default function Home() {
       <SolutionsSection />
       <SmartParkingExperience />
       <DigitalTwinExperience />
+      <IndustriesSection />
     </>
   );
 }
