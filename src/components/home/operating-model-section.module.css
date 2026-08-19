@@ -1,0 +1,620 @@
+.section {
+  position: relative;
+  overflow: clip;
+  padding-block: clamp(7.5rem, 10vw, 10rem) clamp(7.5rem, 10vw, 9rem);
+  background:
+    radial-gradient(circle at 17% 42%, rgba(39, 215, 255, 0.035), transparent 24rem),
+    radial-gradient(circle at 88% 62%, rgba(155, 108, 255, 0.025), transparent 26rem);
+}
+
+.section::before {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(166, 179, 191, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(166, 179, 191, 0.018) 1px, transparent 1px);
+  background-size: 5rem 5rem;
+  mask-image: linear-gradient(to bottom, black, transparent 88%);
+  pointer-events: none;
+  content: "";
+}
+
+.handoff {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 5rem;
+  background: linear-gradient(to bottom, rgba(166, 179, 191, 0.16), rgba(39, 215, 255, 0.35), transparent);
+}
+
+.handoff span {
+  position: absolute;
+  top: 2.25rem;
+  left: -3px;
+  width: 7px;
+  height: 7px;
+  border: 1px solid rgba(39, 215, 255, 0.68);
+  background: var(--bg-primary);
+  box-shadow: 0 0 10px rgba(39, 215, 255, 0.16);
+}
+
+.intro {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr);
+  gap: clamp(3rem, 7vw, 8rem);
+  align-items: end;
+}
+
+.heading {
+  max-width: 48rem;
+  margin-top: 1.75rem;
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -0.042em;
+  text-wrap: balance;
+}
+
+.supportingCopy {
+  max-width: 31rem;
+  padding-bottom: 0.4rem;
+  color: var(--text-secondary);
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  line-height: 1.8;
+  text-wrap: pretty;
+}
+
+.pillars {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  margin: clamp(4.5rem, 6.6vw, 6.25rem) 0 0;
+  padding: 0;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-block: 1px solid rgba(166, 179, 191, 0.1);
+  list-style: none;
+  isolation: isolate;
+}
+
+.pillars::before {
+  position: absolute;
+  top: 3rem;
+  right: 0;
+  left: 0;
+  z-index: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(39, 215, 255, 0.56),
+    rgba(39, 215, 255, 0.32) 46%,
+    rgba(57, 123, 255, 0.42) 74%,
+    rgba(155, 108, 255, 0.42)
+  );
+  transform-origin: left;
+  content: "";
+}
+
+.pillarItem {
+  position: relative;
+  min-width: 0;
+}
+
+.pillar {
+  --pillar-accent: var(--cyan);
+  --pillar-glow: rgba(39, 215, 255, 0.055);
+  position: relative;
+  display: flex;
+  min-height: 34rem;
+  height: 100%;
+  padding: 6rem clamp(1.25rem, 2.2vw, 2.25rem) 2.5rem;
+  flex-direction: column;
+  border-left: 1px solid rgba(166, 179, 191, 0.09);
+  outline: none;
+  background: linear-gradient(180deg, transparent, transparent);
+  transition:
+    background 350ms ease,
+    opacity 300ms ease;
+}
+
+.pillarItem:first-child .pillar {
+  border-left: 0;
+}
+
+.pillar:hover,
+.pillar:focus-visible {
+  background: linear-gradient(180deg, var(--pillar-glow), rgba(11, 22, 34, 0.025) 58%, transparent);
+}
+
+.pillar:focus-visible {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--pillar-accent) 42%, transparent);
+}
+
+.pillarItem:not(:last-child) .pillar::after {
+  position: absolute;
+  top: calc(3rem - 3px);
+  right: -3px;
+  z-index: 3;
+  width: 8px;
+  height: 8px;
+  border-top: 1px solid color-mix(in srgb, var(--pillar-accent) 62%, transparent);
+  border-right: 1px solid color-mix(in srgb, var(--pillar-accent) 62%, transparent);
+  transform: rotate(45deg);
+  transition: transform 250ms ease;
+  content: "";
+}
+
+.pillarItem:not(:last-child) .pillar:hover::after,
+.pillarItem:not(:last-child) .pillar:focus-visible::after {
+  transform: translateX(3px) rotate(45deg);
+}
+
+.build {
+  --pillar-accent: var(--status-green);
+  --pillar-glow: rgba(68, 226, 138, 0.04);
+}
+
+.connect {
+  --pillar-accent: var(--blue);
+  --pillar-glow: rgba(57, 123, 255, 0.055);
+}
+
+.optimize {
+  --pillar-accent: var(--violet);
+  --pillar-glow: rgba(155, 108, 255, 0.045);
+}
+
+.stageNode {
+  position: absolute;
+  top: calc(3rem - 4px);
+  left: clamp(1.25rem, 2.2vw, 2.25rem);
+  z-index: 2;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--bg-primary);
+  border-radius: 50%;
+  background: var(--pillar-accent);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--pillar-accent) 64%, transparent),
+    0 0 7px color-mix(in srgb, var(--pillar-accent) 12%, transparent);
+  transition: box-shadow 250ms ease;
+}
+
+.pillar:hover .stageNode,
+.pillar:focus-visible .stageNode {
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--pillar-accent) 75%, transparent),
+    0 0 12px color-mix(in srgb, var(--pillar-accent) 30%, transparent);
+}
+
+.pillarLabel,
+.tags,
+.aiLabel {
+  font-family: var(--font-jetbrains-mono), monospace;
+  text-transform: uppercase;
+}
+
+.pillarLabel {
+  color: var(--text-muted);
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+}
+
+.pillar h3 {
+  margin-top: 1.1rem;
+  font-size: clamp(1.75rem, 2.4vw, 2.125rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
+
+.pillarDescription {
+  margin-top: 1.75rem;
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  line-height: 1.72;
+}
+
+.tags {
+  display: flex;
+  min-height: 4rem;
+  margin: auto 0 0;
+  padding: 2rem 0 0;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 0.55rem 0.85rem;
+  color: var(--text-subtle);
+  font-size: 0.5625rem;
+  letter-spacing: 0.1em;
+  list-style: none;
+}
+
+.tags li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.tags li::before {
+  width: 3px;
+  height: 3px;
+  background: var(--pillar-accent);
+  content: "";
+}
+
+.pillarVisual {
+  display: block;
+  width: 100%;
+  height: clamp(8.75rem, 12vw, 10.5rem);
+  margin-top: 2.25rem;
+  flex: none;
+  color: var(--pillar-accent);
+  overflow: visible;
+}
+
+.visualGrid,
+.visualBase,
+.visualMuted,
+.visualActive,
+.visualAccent,
+.feedbackLoop {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.visualGrid {
+  stroke: rgba(166, 179, 191, 0.06);
+  stroke-width: 1;
+  stroke-dasharray: 2 8;
+}
+
+.visualBase {
+  stroke: rgba(166, 179, 191, 0.37);
+  stroke-width: 1.1;
+}
+
+.visualMuted {
+  stroke: rgba(112, 129, 142, 0.4);
+  stroke-width: 1.05;
+}
+
+.visualActive {
+  stroke: currentColor;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 4 8;
+  opacity: 0.78;
+  animation: operating-data-flow 8s linear infinite;
+  transition: opacity 250ms ease;
+}
+
+.visualAccent {
+  stroke: currentColor;
+  stroke-width: 1.55;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.9;
+}
+
+.visualStatus {
+  fill: var(--status-green);
+  stroke: var(--bg-primary);
+  stroke-width: 2;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: operating-status 3.4s ease-in-out infinite;
+}
+
+.feedbackLoop {
+  stroke: var(--violet);
+  stroke-width: 1.35;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.65;
+}
+
+.aiLabel {
+  fill: var(--text-muted);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.pillar:hover .visualActive,
+.pillar:focus-visible .visualActive {
+  opacity: 1;
+}
+
+.sectionExit {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  margin-top: clamp(5rem, 8vw, 7rem);
+  justify-content: center;
+}
+
+.sectionExit::before,
+.sectionExit::after {
+  width: min(16vw, 12rem);
+  height: 1px;
+  margin-top: 3px;
+  background: linear-gradient(90deg, transparent, rgba(166, 179, 191, 0.1));
+  content: "";
+}
+
+.sectionExit::after {
+  background: linear-gradient(90deg, rgba(166, 179, 191, 0.1), transparent);
+}
+
+.sectionExit span {
+  width: 7px;
+  height: 7px;
+  border: 1px solid rgba(57, 123, 255, 0.48);
+  background: var(--bg-primary);
+  transform: rotate(45deg);
+}
+
+@keyframes operating-data-flow {
+  to {
+    stroke-dashoffset: -72;
+  }
+}
+
+@keyframes operating-status {
+  0%,
+  100% {
+    opacity: 0.62;
+    transform: scale(0.9);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes operating-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes journey-activate {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .intro,
+  .pillarItem {
+    animation: operating-reveal linear both;
+    animation-timeline: view(block);
+    animation-range: entry 5% entry 52%;
+  }
+
+  .pillarItem:nth-child(2) {
+    animation-range: entry 9% entry 56%;
+  }
+
+  .pillarItem:nth-child(3) {
+    animation-range: entry 13% entry 60%;
+  }
+
+  .pillarItem:nth-child(4) {
+    animation-range: entry 17% entry 64%;
+  }
+
+  .pillars::before {
+    animation: journey-activate linear both;
+    animation-timeline: view(block);
+    animation-range: entry 8% entry 54%;
+  }
+}
+
+@media (min-width: 64rem) {
+  .pillars:has(.pillar:hover) .pillar:not(:hover),
+  .pillars:has(.pillar:focus-visible) .pillar:not(:focus-visible) {
+    opacity: 0.76;
+  }
+}
+
+@media (min-width: 48rem) and (max-width: 63.999rem) {
+  .intro {
+    grid-template-columns: minmax(0, 1.2fr) minmax(16rem, 0.8fr);
+    gap: 3rem;
+  }
+
+  .pillars {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pillars::before {
+    display: none;
+  }
+
+  .pillar {
+    min-height: 29rem;
+    padding: 4.75rem 2rem 2.5rem;
+    border-top: 1px solid rgba(166, 179, 191, 0.09);
+  }
+
+  .pillarItem:nth-child(-n + 2) .pillar {
+    border-top: 0;
+  }
+
+  .pillarItem:nth-child(odd) .pillar {
+    border-left: 0;
+  }
+
+  .pillarItem:not(:last-child) .pillar::after {
+    display: none;
+  }
+
+  .stageNode {
+    top: 2.25rem;
+    left: 2rem;
+  }
+
+  .pillarVisual {
+    height: 11rem;
+  }
+}
+
+@media (max-width: 47.999rem) {
+  .section {
+    padding-block: 6rem 7.5rem;
+  }
+
+  .section::before {
+    background-size: 3.5rem 3.5rem;
+  }
+
+  .handoff {
+    height: 4rem;
+  }
+
+  .intro {
+    display: block;
+  }
+
+  .heading {
+    margin-top: 1.5rem;
+    font-size: clamp(2.25rem, 10vw, 2.75rem);
+    line-height: 1.08;
+    letter-spacing: -0.038em;
+  }
+
+  .supportingCopy {
+    max-width: 100%;
+    margin-top: 2rem;
+    padding-bottom: 0;
+    font-size: 1rem;
+    line-height: 1.72;
+  }
+
+  .pillars {
+    display: block;
+    margin-top: 3.75rem;
+  }
+
+  .pillars::before {
+    top: 0;
+    right: auto;
+    bottom: 0;
+    left: 1.25rem;
+    width: 1px;
+    height: auto;
+    transform-origin: top;
+    background: linear-gradient(
+      to bottom,
+      rgba(39, 215, 255, 0.45),
+      rgba(57, 123, 255, 0.28) 70%,
+      rgba(155, 108, 255, 0.35)
+    );
+  }
+
+  .pillarItem:not(:first-child) {
+    border-top: 1px solid rgba(166, 179, 191, 0.075);
+  }
+
+  .pillar {
+    min-height: 0;
+    padding: 4rem 0 3.5rem 3.75rem;
+    border-left: 0;
+  }
+
+  .pillarItem:not(:last-child)::after {
+    position: absolute;
+    bottom: -3px;
+    left: calc(1.25rem - 3px);
+    z-index: 2;
+    width: 7px;
+    height: 7px;
+    border-right: 1px solid rgba(39, 215, 255, 0.48);
+    border-bottom: 1px solid rgba(39, 215, 255, 0.48);
+    transform: rotate(45deg);
+    content: "";
+  }
+
+  .pillarItem:not(:last-child) .pillar::after {
+    display: none;
+  }
+
+  .stageNode {
+    top: calc(4rem + 2px);
+    left: calc(1.25rem - 4px);
+  }
+
+  .pillar h3 {
+    font-size: clamp(1.75rem, 8.5vw, 2rem);
+  }
+
+  .pillarVisual {
+    width: min(100%, 18rem);
+    height: 10.5rem;
+    margin-top: 2rem;
+  }
+
+  .pillarDescription {
+    max-width: 28rem;
+    margin-top: 1.5rem;
+    font-size: 0.9375rem;
+  }
+
+  .tags {
+    min-height: 0;
+    margin-top: 0;
+    padding-top: 1.75rem;
+  }
+
+  .sectionExit {
+    margin-top: 5rem;
+  }
+
+  @supports (animation-timeline: view()) {
+    .pillars::before {
+      animation-name: journey-activate-mobile;
+    }
+  }
+}
+
+@keyframes journey-activate-mobile {
+  from {
+    transform: scaleY(0);
+  }
+
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro,
+  .pillarItem,
+  .pillars::before,
+  .visualActive,
+  .visualStatus {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .pillar,
+  .pillarItem:not(:last-child) .pillar::after {
+    transition: none;
+  }
+}
