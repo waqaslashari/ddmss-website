@@ -13,7 +13,7 @@ export function TechnicalLabel({
 }: TechnicalLabelProps) {
   return (
     <span
-      className={`inline-flex items-center gap-2 font-mono text-[0.6875rem] font-medium tracking-[0.16em] text-text-muted uppercase ${className}`}
+      className={`technical-label inline-flex items-center gap-2 font-mono uppercase ${className}`}
     >
       {status ? (
         <span

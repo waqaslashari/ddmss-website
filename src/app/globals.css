@@ -32,6 +32,10 @@
   --page-gutter: clamp(1.25rem, 4vw, 4.5rem);
   --header-height: 6rem;
   --header-height-scrolled: 4.75rem;
+
+  --text-tech-primary: clamp(0.75rem, 0.72rem + 0.12vw, 0.8125rem);
+  --text-tech-secondary: clamp(0.65625rem, 0.635rem + 0.08vw, 0.71875rem);
+  --text-tech-micro: 0.625rem;
 }
 
 @theme inline {
@@ -155,11 +159,21 @@ button {
   color: transparent;
 }
 
+.technical-label {
+  color: var(--text-muted);
+  font-size: var(--text-tech-primary);
+  font-weight: 500;
+  letter-spacing: 0.09em;
+}
+
 @media (max-width: 47.999rem) {
   :root {
     --page-gutter: clamp(1.25rem, 5.5vw, 1.5rem);
     --header-height: 5rem;
     --header-height-scrolled: 4.5rem;
+    --text-tech-primary: 0.75rem;
+    --text-tech-secondary: 0.65625rem;
+    --text-tech-micro: 0.6rem;
   }
 
   .technical-background::before {

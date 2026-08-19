@@ -197,9 +197,9 @@
 }
 
 .pillarLabel {
-  color: var(--text-muted);
-  font-size: 0.625rem;
-  letter-spacing: 0.14em;
+  color: var(--text-secondary);
+  font-size: var(--text-tech-primary);
+  letter-spacing: 0.075em;
 }
 
 .pillar h3 {
@@ -213,7 +213,7 @@
 .pillarDescription {
   margin-top: 1.75rem;
   color: var(--text-secondary);
-  font-size: 0.9375rem;
+  font-size: 1rem;
   line-height: 1.72;
 }
 
@@ -225,9 +225,9 @@
   flex-wrap: wrap;
   align-content: flex-start;
   gap: 0.55rem 0.85rem;
-  color: var(--text-subtle);
-  font-size: 0.5625rem;
-  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  font-size: var(--text-tech-secondary);
+  letter-spacing: 0.055em;
   list-style: none;
 }
 

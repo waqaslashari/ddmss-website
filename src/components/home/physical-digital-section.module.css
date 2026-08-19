@@ -292,9 +292,9 @@
 }
 
 .domainNumber {
-  color: var(--text-subtle);
-  font-size: 0.625rem;
-  letter-spacing: 0.14em;
+  color: var(--text-muted);
+  font-size: var(--text-tech-primary);
+  letter-spacing: 0.08em;
 }
 
 .domainCopy strong {
@@ -309,9 +309,9 @@
 .domainDetail {
   margin-top: 0.45rem;
   color: var(--text-muted);
-  font-size: 0.625rem;
+  font-size: var(--text-tech-secondary);
   line-height: 1.5;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.045em;
 }
 
 .hub {
@@ -383,15 +383,15 @@
 
 .hubCopy strong {
   color: var(--text-primary);
-  font-size: 0.6875rem;
-  letter-spacing: 0.09em;
+  font-size: var(--text-tech-primary);
+  letter-spacing: 0.065em;
 }
 
 .hubCopy span {
   margin-top: 0.45rem;
-  color: var(--text-subtle);
-  font-size: 0.5625rem;
-  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  font-size: var(--text-tech-secondary);
+  letter-spacing: 0.05em;
 }
 
 .systemMarker {
@@ -443,9 +443,9 @@
   margin-top: 2rem;
   color: var(--text-muted);
   font-family: var(--font-jetbrains-mono), monospace;
-  font-size: clamp(0.6875rem, 1vw, 0.8125rem);
+  font-size: var(--text-tech-primary);
   line-height: 1.7;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -648,9 +648,7 @@
     font-size: 1.05rem;
   }
 
-  .domainDetail {
-    font-size: 0.5625rem;
-  }
+  .domainDetail { font-size: var(--text-tech-secondary); }
 
   .hub {
     position: relative;
@@ -682,7 +680,7 @@
   }
 
   .hubCopy strong {
-    font-size: 0.625rem;
+    font-size: var(--text-tech-primary);
     line-height: 1.5;
   }
 
@@ -709,8 +707,8 @@
 
   .result > p {
     margin-top: 1.5rem;
-    font-size: 0.625rem;
-    letter-spacing: 0.1em;
+    font-size: var(--text-tech-primary);
+    letter-spacing: 0.07em;
   }
 }
 
