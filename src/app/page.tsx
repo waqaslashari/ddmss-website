@@ -1,5 +1,11 @@
 import { HomeHero } from "@/components/home/home-hero";
+import { PhysicalDigitalSection } from "@/components/home/physical-digital-section";
 
 export default function Home() {
-  return <HomeHero />;
+  return (
+    <>
+      <HomeHero />
+      <PhysicalDigitalSection />
+    </>
+  );
 }

@@ -58,6 +58,18 @@
   pointer-events: none;
 }
 
+.mobileOnly {
+  display: none;
+}
+
+.assetGroup {
+  filter: url("#ddmss-object-shadow");
+}
+
+.assetImage {
+  opacity: 0.88;
+}
+
 .dataSystem {
   filter: url("#ddmss-object-shadow");
 }
@@ -172,7 +184,7 @@
   stroke-width: 1.5px;
   paint-order: stroke fill;
   font-family: var(--font-jetbrains-mono), monospace;
-  font-size: 9.5px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -203,9 +215,31 @@
 
 @media (max-width: 47.999rem) {
   .ecosystem {
-    width: calc(100% + 2.5rem);
-    margin-inline: -1.25rem;
+    width: 100%;
+    max-width: 100%;
+    margin-inline: 0;
+    box-sizing: border-box;
     transform: none;
+  }
+
+  .backLayer,
+  .midLayer,
+  .frontLayer,
+  .coreLayer {
+    transform: none;
+    transition: none;
+  }
+
+  .scene {
+    overflow: visible;
+  }
+
+  .desktopOnly {
+    display: none;
+  }
+
+  .mobileOnly {
+    display: block;
   }
 
   .coordinate,
