@@ -2,6 +2,7 @@ import { HomeHero } from "@/components/home/home-hero";
 import { CapabilitiesSection } from "@/components/home/capabilities-section";
 import { OperatingModelSection } from "@/components/home/operating-model-section";
 import { PhysicalDigitalSection } from "@/components/home/physical-digital-section";
+import { SolutionsSection } from "@/components/home/solutions-section";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <PhysicalDigitalSection />
       <OperatingModelSection />
       <CapabilitiesSection />
+      <SolutionsSection />
     </>
   );
 }
