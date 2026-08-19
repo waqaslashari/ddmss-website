@@ -34,7 +34,6 @@ export function PhysicalDigitalSection() {
         <ConnectedDomainsVisual />
 
         <div className={styles.result}>
-          <TechnicalLabel status>Unified ecosystem / Active</TechnicalLabel>
           <h3>We connect them.</h3>
           <p>AI · Data · Software · Connected Infrastructure</p>
         </div>

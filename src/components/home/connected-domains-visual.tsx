@@ -5,25 +5,25 @@ const domains = [
     key: "people",
     number: "01",
     title: "People",
-    detail: "Users · Workforce · Operators",
+    detail: "Users / Operators",
   },
   {
     key: "systems",
     number: "02",
     title: "Systems",
-    detail: "Applications · APIs · Cloud",
+    detail: "Software / Platforms",
   },
   {
     key: "devices",
     number: "03",
     title: "Devices",
-    detail: "Sensors · Chargers · Gateways",
+    detail: "IoT / Edge",
   },
   {
     key: "infrastructure",
     number: "04",
     title: "Infrastructure",
-    detail: "Buildings · Assets · Mobility",
+    detail: "Physical / Assets",
   },
 ] as const;
 
@@ -146,7 +146,7 @@ export function ConnectedDomainsVisual() {
         ))}
       </ol>
 
-      <div className={styles.hub} aria-label="DDMSS common data and intelligence layer">
+      <div className={styles.hub} aria-label="Shared intelligence and data convergence point">
         <span className={styles.hubOrbit} aria-hidden="true" />
         <span className={styles.hubCore} aria-hidden="true">
           <span />
@@ -155,8 +155,8 @@ export function ConnectedDomainsVisual() {
           <span />
         </span>
         <span className={styles.hubCopy}>
-          <strong>DDMSS / Common Layer</strong>
-          <span>Data · Intelligence · Connectivity</span>
+          <strong>Intelligence / Convergence</strong>
+          <span>Data / Connected</span>
         </span>
       </div>
 
