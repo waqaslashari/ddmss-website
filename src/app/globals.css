@@ -70,7 +70,7 @@ html {
 }
 
 body {
-  min-width: 20rem;
+  min-width: min(20rem, 100%);
   background:
     radial-gradient(circle at 78% 0%, rgba(57, 123, 255, 0.08), transparent 34rem),
     var(--bg-primary);

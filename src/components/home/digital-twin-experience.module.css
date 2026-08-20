@@ -604,6 +604,7 @@
   .energySystem dl { grid-template-columns: 1fr; }
   .energySystem dl div + div { margin-top: 0.6rem; padding-top: 0.6rem; padding-left: 0; border-top: 1px solid rgba(166, 179, 191, 0.08); border-left: 0; }
   .telemetryTitle { left: calc(50% + 4.7rem); }
+  .twinEnvironment::before { inset-inline: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -616,7 +616,7 @@
 
 @media (max-width: 23rem) {
   .handoff { font-size: 0.625rem; }
-  .mobileIndustry .environment { aspect-ratio: 1.28; }
+  .mobileIndustry .environment { width: 100%; aspect-ratio: 1.28; margin-inline: 0; }
   .mobileTechnologies { gap: 0.3rem; }
   .mobileTechnologies li { padding-inline: 0.55rem 0.4rem; letter-spacing: 0.025em; }
   .sceneDatum { display: none; }

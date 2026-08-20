@@ -7,6 +7,7 @@ import { DigitalTwinExperience } from "@/components/home/digital-twin-experience
 import { FeaturedWorkSection } from "@/components/home/featured-work-section";
 import { OperatingModelSection } from "@/components/home/operating-model-section";
 import { PhysicalDigitalSection } from "@/components/home/physical-digital-section";
+import { RegionalPresenceSection } from "@/components/home/regional-presence-section";
 import { SolutionsSection } from "@/components/home/solutions-section";
 import { SmartParkingExperience } from "@/components/home/smart-parking-experience";
 
@@ -23,6 +24,7 @@ export default function Home() {
       <IndustriesSection />
       <CredibilitySection />
       <FeaturedWorkSection />
+      <RegionalPresenceSection />
       <InsightsSection />
     </>
   );
