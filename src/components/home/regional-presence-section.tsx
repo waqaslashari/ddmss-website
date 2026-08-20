@@ -18,6 +18,21 @@ const regions = [
     primary: "Technology / Delivery Ecosystem",
     descriptors: ["Engineering"],
   },
+  {
+    name: "India",
+    primary: "Technology / Engineering Ecosystem",
+    descriptors: ["Digital Delivery"],
+  },
+  {
+    name: "United Kingdom",
+    primary: "International Market",
+    descriptors: ["Partnerships", "Technology"],
+  },
+  {
+    name: "United States",
+    primary: "International Market",
+    descriptors: ["Technology Ecosystem", "Innovation"],
+  },
 ] as const;
 
 export function RegionalPresenceSection() {
@@ -35,8 +50,8 @@ export function RegionalPresenceSection() {
               <span>Built in Oman.</span>
               <span>Engineered for the Region.</span>
             </h2>
-            <p>DDMSS is based in Oman, with technology and delivery capabilities designed to support organizations across the Middle East and Pakistan.</p>
-            <strong className={styles.regionalLine}>Oman · Middle East · Pakistan</strong>
+            <p>DDMSS is based in Oman, with technology, delivery and market relationships extending across the Middle East and selected international markets.</p>
+            <strong className={styles.regionalLine}>Oman · Middle East · Pakistan · India · UK · US</strong>
           </div>
 
           <RegionalNetworkMap />
@@ -55,6 +70,10 @@ export function RegionalPresenceSection() {
               </li>
             ))}
           </ol>
+        </div>
+
+        <div className={styles.sectionEnd} aria-hidden="true">
+          <span>Where We Connect</span><i /><span>What We Think About</span>
         </div>
       </div>
     </section>

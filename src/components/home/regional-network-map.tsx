@@ -5,112 +5,140 @@ export function RegionalNetworkMap() {
     <figure
       className={styles.map}
       role="img"
-      aria-label="Regional technology network centered on Oman, connecting DDMSS capabilities across Middle Eastern markets and Pakistan's technology and delivery ecosystem."
+      aria-label="Oman-centered technology network connecting regional markets in the Middle East with technology, delivery, partnership and market relationships across Pakistan, India, the United Kingdom and the United States."
     >
-      <span className={styles.mapReference}>REGIONAL NETWORK / 12</span>
-      <span className={styles.mapCoordinate}>23.5880° N / 58.3829° E</span>
+      <span className={styles.mapReference}>GLOBAL NETWORK / 12</span>
+      <span className={styles.mapCoordinate}>ORIGIN / 23.5880° N · 58.3829° E</span>
 
-      <svg className={styles.desktopMap} viewBox="0 0 820 540" aria-hidden="true">
+      <svg className={styles.desktopMap} viewBox="0 0 1000 610" aria-hidden="true">
         <defs>
-          <radialGradient id="oman-node-field" cx="50%" cy="50%" r="50%">
-            <stop offset="0" stopColor="#27d7ff" stopOpacity="0.18" />
+          <radialGradient id="oman-global-field" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stopColor="#27d7ff" stopOpacity="0.2" />
             <stop offset="1" stopColor="#27d7ff" stopOpacity="0" />
           </radialGradient>
         </defs>
 
         <g className={styles.referenceGrid}>
-          <path d="M56 72H764M56 180H764M56 288H764M56 396H764M144 44v448M322 44v448M500 44v448M678 44v448" />
-          <path d="M72 54v32M56 70h32M748 54v32M732 70h32M72 454v32M56 470h32M748 454v32M732 470h32" />
+          <path d="M48 72H952M48 190H952M48 308H952M48 426H952M48 544H952" />
+          <path d="M102 44v522M302 44v522M502 44v522M702 44v522M902 44v522" />
+          <path d="M64 54v34M48 71h32M936 54v34M920 71h32M64 526v34M48 543h32M936 526v34M920 543h32" />
         </g>
 
         <g className={styles.geography}>
-          <path d="M116 174 147 146l44 4 29-26 63 8 31 30 49 7 27 29 50 5 29 28-13 42-32 22-3 37-31 12-22-20-31 8-23-26-53-4-35-32-45-10-24-38-48-11z" />
-          <path d="m469 231 18-16 22 8 16 31-13 32-23 15-25-22z" />
-          <path d="m525 202 39-34 43 8 18 32-10 42-36 35-43-16-11-34z" />
-          <path d="m625 176 38-31 48 21 28 48-17 57-47 22-36-33-25-53z" />
-          <path d="m339 344 38-12 36 21 32-4 21 25-8 31-45 14-51-11-32-29z" />
+          <path d="M54 176 85 118l64-38 73 19 35 43-12 47-44 27-20 52-57 24-48-39z" />
+          <path d="m212 284 38 25 16 54-22 84-43 61-34-26 9-77-22-58z" />
+          <path d="m320 145 45-34 68 16 30 38-19 40-61 7-46-24z" />
+          <path d="m378 224 62-12 71 25 55 56-26 49-72-4-30-50-62-28z" />
+          <path d="m543 252 52-20 54 18 30 45-26 52-48 24-48-28-27-45z" />
+          <path d="m651 218 76-55 97-7 91 43 23 58-54 35-82-17-42 42-68-31z" />
+          <path d="m742 318 49-13 37 34-12 72-35 42-28-38 7-54z" />
+        </g>
+
+        <g className={styles.zoneMarkers}>
+          <path d="M471 254h102v72H471z" />
+          <text x="522" y="280" textAnchor="middle">MIDDLE EAST</text>
+          <text x="522" y="298" textAnchor="middle">REGIONAL ZONE</text>
         </g>
 
         <g className={styles.regionPaths}>
-          <path d="M476 302C420 252 346 222 276 210" />
-          <path d="M476 302C540 244 612 218 679 225" />
-          <path d="M476 302C442 349 395 378 354 382" />
+          <path className={styles.routeMiddleEast} d="M570 346C555 324 540 306 522 290" />
+          <path className={styles.routePakistan} d="M570 346C640 304 702 283 750 276" />
+          <path className={styles.routeIndia} d="M570 346C668 360 742 382 792 403" />
+          <path className={styles.routeUnitedKingdom} d="M570 346C505 254 436 189 389 162" />
+          <path className={styles.routeUnitedStates} d="M570 346C435 244 283 190 148 180" />
         </g>
 
-        <g className={styles.pathNodes}>
-          <circle cx="425" cy="263" r="3" />
-          <circle cx="362" cy="230" r="3" />
-          <circle cx="532" cy="258" r="3" />
-          <circle cx="605" cy="230" r="3" />
+        <g className={styles.dataPulses}>
+          <circle r="3"><animateMotion dur="7s" begin="1s" repeatCount="indefinite" path="M570 346C555 324 540 306 522 290" /></circle>
+          <circle r="3"><animateMotion dur="8s" begin="2.2s" repeatCount="indefinite" path="M570 346C640 304 702 283 750 276" /></circle>
+          <circle r="3"><animateMotion dur="8.5s" begin="3s" repeatCount="indefinite" path="M570 346C668 360 742 382 792 403" /></circle>
+          <circle r="3"><animateMotion dur="10s" begin="4.1s" repeatCount="indefinite" path="M570 346C505 254 436 189 389 162" /></circle>
+          <circle r="3"><animateMotion dur="11s" begin="5s" repeatCount="indefinite" path="M570 346C435 244 283 190 148 180" /></circle>
         </g>
 
-        <g className={styles.secondaryNode}>
-          <circle cx="276" cy="210" r="9" />
-          <circle cx="276" cy="210" r="3" />
-          <path d="M276 210h-66l-16-16h-83" />
+        <g className={styles.regionalNodes}>
+          <circle cx="522" cy="290" r="10" /><circle cx="522" cy="290" r="3" />
+          <circle cx="750" cy="276" r="10" /><circle cx="750" cy="276" r="3" />
+          <circle cx="792" cy="403" r="10" /><circle cx="792" cy="403" r="3" />
         </g>
 
-        <g className={styles.secondaryNode}>
-          <circle cx="679" cy="225" r="9" />
-          <circle cx="679" cy="225" r="3" />
-          <path d="M679 225h31l14-14h58" />
+        <g className={styles.internationalNodes}>
+          <circle cx="389" cy="162" r="8" /><circle cx="389" cy="162" r="2.5" />
+          <circle cx="148" cy="180" r="8" /><circle cx="148" cy="180" r="2.5" />
         </g>
 
         <g className={styles.omanField}>
-          <circle cx="476" cy="302" r="82" fill="url(#oman-node-field)" />
-          <circle cx="476" cy="302" r="30" />
-          <circle cx="476" cy="302" r="12" />
-          <circle cx="476" cy="302" r="4" />
-          <path d="M476 258v-20M476 366v-20M432 302h-20M540 302h-20" />
+          <circle className={styles.omanPulse} cx="570" cy="346" r="88" fill="url(#oman-global-field)" />
+          <circle cx="570" cy="346" r="34" />
+          <circle cx="570" cy="346" r="14" />
+          <circle cx="570" cy="346" r="4.5" />
+          <path d="M570 296v-22M570 418v-22M520 346h-22M642 346h-22" />
         </g>
 
         <g className={styles.mapLabels}>
-          <text x="110" y="169" className={styles.regionName}>MIDDLE EAST</text>
-          <text x="110" y="187">REGIONAL MARKETS</text>
-          <text x="110" y="202">ENTERPRISE / INFRASTRUCTURE</text>
+          <text x="570" y="467" textAnchor="middle" className={styles.omanName}>OMAN</text>
+          <text x="570" y="486" textAnchor="middle">BASE / PRIMARY MARKET</text>
+          <text x="570" y="502" textAnchor="middle">CLIENT DELIVERY</text>
 
-          <text x="782" y="185" textAnchor="end" className={styles.regionName}>PAKISTAN</text>
-          <text x="782" y="203" textAnchor="end">TECHNOLOGY / ENGINEERING</text>
-          <text x="782" y="218" textAnchor="end">DELIVERY ECOSYSTEM</text>
+          <text x="750" y="244" textAnchor="middle" className={styles.regionName}>PAKISTAN</text>
+          <text x="750" y="259" textAnchor="middle">TECHNOLOGY / DELIVERY</text>
 
-          <text x="476" y="403" textAnchor="middle" className={styles.omanName}>OMAN</text>
-          <text x="476" y="421" textAnchor="middle">BASE / PRIMARY MARKET</text>
-          <text x="476" y="436" textAnchor="middle">CLIENT DELIVERY</text>
+          <text x="792" y="437" textAnchor="middle" className={styles.regionName}>INDIA</text>
+          <text x="792" y="452" textAnchor="middle">TECHNOLOGY / ENGINEERING</text>
+
+          <text x="389" y="130" textAnchor="middle" className={styles.internationalName}>UNITED KINGDOM</text>
+          <text x="389" y="145" textAnchor="middle">INTERNATIONAL MARKET</text>
+
+          <text x="148" y="148" textAnchor="middle" className={styles.internationalName}>UNITED STATES</text>
+          <text x="148" y="163" textAnchor="middle">INTERNATIONAL MARKET</text>
         </g>
 
         <g className={styles.axisLabels}>
-          <text x="65" y="113">REGION / WEST</text>
-          <text x="755" y="113" textAnchor="end">REGION / EAST</text>
-          <text x="65" y="478">NETWORK / CONNECTED</text>
-          <text x="755" y="478" textAnchor="end">SYSTEM / REGIONAL</text>
+          <text x="58" y="106">NORTH AMERICA / WEST</text>
+          <text x="400" y="106">EUROPE</text>
+          <text x="610" y="106">MIDDLE EAST / SOUTH ASIA</text>
+          <text x="58" y="566">RELATIONSHIP NETWORK / CONNECTED</text>
+          <text x="942" y="566" textAnchor="end">ORIGIN / OMAN</text>
         </g>
       </svg>
 
-      <svg className={styles.mobileMap} viewBox="0 0 340 310" aria-hidden="true">
+      <svg className={styles.mobileMap} viewBox="0 0 340 470" aria-hidden="true">
         <g className={styles.mobileReference}>
-          <path d="M28 48h284M28 260h284M52 28v252M288 28v252" />
+          <path d="M28 42h284M28 430h284M52 24v424M288 24v424" />
         </g>
         <g className={styles.mobilePaths}>
-          <path d="M170 155 78 92M170 155l92-63" />
+          <path className={styles.routeUnitedStates} d="M170 240C126 182 130 107 170 64" />
+          <path className={styles.routeUnitedKingdom} d="M170 240V137" />
+          <path className={styles.routeMiddleEast} d="M170 240 70 360" />
+          <path className={styles.routePakistan} d="M170 240v146" />
+          <path className={styles.routeIndia} d="M170 240 270 360" />
         </g>
-        <g className={styles.mobileSecondaryNode}>
-          <circle cx="78" cy="92" r="9" /><circle cx="78" cy="92" r="3" />
-          <circle cx="262" cy="92" r="9" /><circle cx="262" cy="92" r="3" />
+        <g className={styles.mobileInternationalNodes}>
+          <circle cx="170" cy="64" r="8" /><circle cx="170" cy="64" r="2.5" />
+          <circle cx="170" cy="137" r="8" /><circle cx="170" cy="137" r="2.5" />
+        </g>
+        <g className={styles.mobileRegionalNodes}>
+          <circle cx="70" cy="360" r="10" /><circle cx="70" cy="360" r="3" />
+          <circle cx="170" cy="386" r="10" /><circle cx="170" cy="386" r="3" />
+          <circle cx="270" cy="360" r="10" /><circle cx="270" cy="360" r="3" />
         </g>
         <g className={styles.mobileOmanNode}>
-          <circle cx="170" cy="155" r="54" />
-          <circle cx="170" cy="155" r="24" />
-          <circle cx="170" cy="155" r="6" />
+          <circle className={styles.omanPulse} cx="170" cy="240" r="58" />
+          <circle cx="170" cy="240" r="26" />
+          <circle cx="170" cy="240" r="6" />
         </g>
         <g className={styles.mobileMapLabels} textAnchor="middle">
-          <text x="78" y="63">MIDDLE EAST</text>
-          <text x="262" y="63">PAKISTAN</text>
-          <text x="170" y="229" className={styles.mobileOmanLabel}>OMAN</text>
-          <text x="170" y="247">BASE / PRIMARY MARKET</text>
+          <text x="170" y="42">UNITED STATES</text>
+          <text x="170" y="116">UNITED KINGDOM</text>
+          <text x="170" y="316" className={styles.mobileOmanLabel}>OMAN</text>
+          <text x="170" y="331">BASE / PRIMARY MARKET</text>
+          <text x="70" y="391">MIDDLE EAST</text>
+          <text x="170" y="419">PAKISTAN</text>
+          <text x="270" y="391">INDIA</text>
         </g>
       </svg>
 
-      <span className={styles.mapStatus} aria-hidden="true"><i /> NETWORK / CONNECTED</span>
+      <span className={styles.mapStatus} aria-hidden="true"><i /> RELATIONSHIPS / CONNECTED</span>
     </figure>
   );
 }

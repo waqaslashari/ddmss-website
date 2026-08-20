@@ -45,9 +45,9 @@
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: minmax(19rem, 0.58fr) minmax(0, 1fr);
+  grid-template-columns: minmax(17rem, 0.48fr) minmax(0, 1fr);
   grid-template-rows: auto 1fr;
-  gap: 2.75rem clamp(3.5rem, 7vw, 7rem);
+  gap: 3rem clamp(3rem, 6vw, 6rem);
   align-items: start;
 }
 
@@ -98,10 +98,12 @@
 
 .regionList {
   display: grid;
-  grid-column: 1;
+  grid-column: 1 / -1;
   grid-row: 2;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   align-self: end;
   border-top: 1px solid rgba(166, 179, 191, 0.13);
+  border-left: 1px solid rgba(166, 179, 191, 0.08);
   list-style: none;
 }
 
@@ -110,7 +112,8 @@
   min-width: 0;
   grid-template-columns: 2.25rem minmax(0, 1fr);
   gap: 0.8rem;
-  padding: 1rem 0;
+  padding: 1.15rem 1.1rem;
+  border-right: 1px solid rgba(166, 179, 191, 0.08);
   border-bottom: 1px solid rgba(166, 179, 191, 0.09);
 }
 
@@ -169,7 +172,7 @@
   position: absolute;
   top: -1px;
   bottom: -1px;
-  left: 0;
+  left: -1px;
   width: 1px;
   background: var(--cyan);
   box-shadow: 0 0 0.55rem rgba(39, 215, 255, 0.22);
@@ -182,7 +185,7 @@
 }
 
 .primaryRegion > * {
-  margin-left: 0.75rem;
+  margin-left: 0.55rem;
 }
 
 .map {
@@ -190,7 +193,7 @@
   min-width: 0;
   min-height: clamp(42rem, 52vw, 48rem);
   grid-column: 2;
-  grid-row: 1 / span 2;
+  grid-row: 1;
   overflow: hidden;
   border-block: 1px solid rgba(166, 179, 191, 0.1);
   background:
@@ -241,11 +244,14 @@
 .referenceGrid,
 .geography,
 .regionPaths,
-.secondaryNode,
+.zoneMarkers,
+.regionalNodes,
+.internationalNodes,
 .omanField,
 .mobileReference,
 .mobilePaths,
-.mobileSecondaryNode,
+.mobileRegionalNodes,
+.mobileInternationalNodes,
 .mobileOmanNode {
   fill: none;
   stroke-linecap: square;
@@ -272,25 +278,58 @@
   animation: regionalFlow 8s linear infinite;
 }
 
-.pathNodes {
-  fill: var(--blue);
-  filter: drop-shadow(0 0 4px rgba(57, 123, 255, 0.4));
+.routeMiddleEast { animation-delay: -1s; }
+.routePakistan { animation-delay: -2.2s; }
+.routeIndia { animation-delay: -3.2s; }
+.routeUnitedKingdom { animation-delay: -4.2s; stroke: rgba(91, 114, 255, 0.58); }
+.routeUnitedStates { animation-delay: -5.2s; stroke: rgba(155, 108, 255, 0.5); }
+
+.zoneMarkers {
+  fill: rgba(39, 215, 255, 0.025);
+  stroke: rgba(39, 215, 255, 0.24);
+  stroke-width: 1;
 }
 
-.secondaryNode,
-.mobileSecondaryNode {
+.zoneMarkers text {
+  fill: rgba(166, 179, 191, 0.6);
+  stroke: none;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 9px;
+  letter-spacing: 0.05em;
+}
+
+.regionalNodes,
+.mobileRegionalNodes {
   stroke: rgba(57, 123, 255, 0.72);
   stroke-width: 1.1;
 }
 
-.secondaryNode circle:first-child,
-.mobileSecondaryNode circle:nth-child(odd) {
+.regionalNodes circle:nth-child(odd),
+.mobileRegionalNodes circle:nth-child(odd),
+.internationalNodes circle:nth-child(odd),
+.mobileInternationalNodes circle:nth-child(odd) {
   fill: rgba(4, 10, 16, 0.92);
 }
 
-.secondaryNode circle:nth-child(2),
-.mobileSecondaryNode circle:nth-child(even) {
+.regionalNodes circle:nth-child(even),
+.mobileRegionalNodes circle:nth-child(even) {
   fill: var(--blue);
+}
+
+.internationalNodes,
+.mobileInternationalNodes {
+  stroke: rgba(155, 108, 255, 0.62);
+  stroke-width: 1;
+}
+
+.internationalNodes circle:nth-child(even),
+.mobileInternationalNodes circle:nth-child(even) {
+  fill: var(--violet);
+}
+
+.dataPulses {
+  fill: var(--cyan);
+  filter: drop-shadow(0 0 4px rgba(39, 215, 255, 0.48));
 }
 
 .omanField {
@@ -305,6 +344,12 @@
 .omanField circle:nth-child(4) {
   fill: var(--cyan);
   filter: drop-shadow(0 0 6px rgba(39, 215, 255, 0.65));
+}
+
+.omanPulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: omanSignal 4.8s ease-in-out infinite;
 }
 
 .mapLabels,
@@ -322,6 +367,12 @@
   font-weight: 600;
 }
 
+.mapLabels .internationalName {
+  fill: rgba(155, 132, 255, 0.82);
+  font-size: 11px;
+  font-weight: 600;
+}
+
 .mapLabels .omanName {
   fill: var(--cyan);
   font-size: 15px;
@@ -335,6 +386,31 @@
 
 @keyframes regionalFlow {
   to { stroke-dashoffset: -60; }
+}
+
+@keyframes omanSignal {
+  0%, 100% { opacity: 0.62; transform: scale(0.96); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+
+.sectionEnd {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 3rem;
+  color: var(--text-subtle);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: var(--text-tech-micro);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.sectionEnd i {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, rgba(39, 215, 255, 0.16), rgba(57, 123, 255, 0.25), rgba(155, 108, 255, 0.14));
 }
 
 @media (max-width: 64rem) {
@@ -354,7 +430,7 @@
   .narrative { max-width: 46rem; }
   .narrative h2 { max-width: 12ch; }
   .map { min-height: 36rem; }
-  .regionList { width: min(100%, 46rem); }
+  .regionList { width: 100%; }
 }
 
 @media (max-width: 47.999rem) {
@@ -364,7 +440,7 @@
   .narrative h2 { max-width: 11ch; margin-top: 1.1rem; font-size: clamp(2.3rem, 10.5vw, 3.1rem); line-height: 1.04; }
   .narrative > p { margin-top: 1.5rem; font-size: 1rem; line-height: 1.7; }
   .regionalLine { margin-top: 1.3rem; }
-  .map { min-height: 0; aspect-ratio: 1.08; }
+  .map { min-height: 0; aspect-ratio: 340 / 470; }
   .desktopMap { display: none; }
   .mobileMap { display: block; width: 100%; height: 100%; }
   .mapCoordinate { display: none; }
@@ -377,17 +453,24 @@
   .mobileOmanNode circle:last-child { fill: var(--cyan); filter: drop-shadow(0 0 5px rgba(39, 215, 255, 0.55)); }
   .mobileMapLabels { font-size: 9px; }
   .mobileMapLabels .mobileOmanLabel { fill: var(--cyan); font-size: 13px; font-weight: 650; }
-  .regionList { margin-top: 0.35rem; }
-  .regionList > li { padding-block: 1.05rem; }
-  .regionList ul { display: none; }
+  .regionList { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 0.35rem; }
+  .regionList > li { padding: 1.05rem 0.85rem; }
+  .regionList ul { gap: 0.25rem 0.55rem; }
+  .regionList ul li:not(:last-child)::after { margin-left: 0.55rem; }
   .regionList h3 { font-size: var(--text-tech-primary); }
   .regionList p { color: var(--text-secondary); font-size: var(--text-tech-primary); }
+  .sectionEnd span { max-width: 7.5rem; }
+  .sectionEnd span:last-child { text-align: right; }
+}
+
+@media (max-width: 25rem) {
+  .regionList { grid-template-columns: 1fr; }
+  .regionList > li { padding-inline: 0.75rem; }
 }
 
 @media (max-width: 23rem) {
   .narrative h2 { font-size: 2.35rem; }
   .regionalLine { letter-spacing: 0.035em; }
-  .map { aspect-ratio: 1; }
   .mapStatus { font-size: 0.55rem; }
   .regionList > li { grid-template-columns: 1.8rem minmax(0, 1fr); gap: 0.55rem; }
   .primaryRegion > * { margin-left: 0.55rem; }
@@ -395,7 +478,10 @@
 
 @media (prefers-reduced-motion: reduce) {
   .regionPaths,
-  .mobilePaths {
+  .mobilePaths,
+  .omanPulse {
     animation: none;
   }
+
+  .dataPulses { display: none; }
 }
