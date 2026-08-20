@@ -1,5 +1,6 @@
 import { HomeHero } from "@/components/home/home-hero";
 import { IndustriesSection } from "@/components/home/industries-section";
+import { InsightsSection } from "@/components/home/insights-section";
 import { CapabilitiesSection } from "@/components/home/capabilities-section";
 import { CredibilitySection } from "@/components/home/credibility-section";
 import { DigitalTwinExperience } from "@/components/home/digital-twin-experience";
@@ -22,6 +23,7 @@ export default function Home() {
       <IndustriesSection />
       <CredibilitySection />
       <FeaturedWorkSection />
+      <InsightsSection />
     </>
   );
 }
