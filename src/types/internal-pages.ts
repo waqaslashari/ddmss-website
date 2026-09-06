@@ -1,4 +1,4 @@
-import type { CapabilityVisualKey } from "@/types/content";
+import type { CapabilityVisualKey, SolutionVisualKey } from "@/types/content";
 
 export type PageFamily =
   | "capability"
@@ -88,11 +88,14 @@ export type CapabilityPageContent = InternalPageContentBase & {
 
 export type SolutionPageContent = InternalPageContentBase & {
   family: "solution";
+  visualKey: SolutionVisualKey;
   challenge: string;
+  challengeSystems: readonly string[];
   architecture: string;
   coreComponents: readonly DetailItem[];
   operatingFlow: readonly ProcessItem[];
   benefits: readonly DetailItem[];
+  relatedCapabilities: readonly ContentReference[];
   relatedIndustries: readonly ContentReference[];
   relatedWork: readonly ContentReference[];
 };
@@ -157,6 +160,7 @@ export type IndexItem = {
   description: string;
   href: string;
   tags?: readonly string[];
+  architectureLine?: string;
   visualKey?: string;
   actionLabel?: string;
 };

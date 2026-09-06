@@ -337,6 +337,35 @@
   text-wrap: pretty;
 }
 
+.systemList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-top: clamp(2.25rem, 4vw, 3.5rem);
+  border-top: 1px solid rgba(166, 179, 191, 0.12);
+  border-left: 1px solid rgba(166, 179, 191, 0.08);
+  list-style: none;
+}
+
+.systemList li {
+  flex: 1 1 10rem;
+  padding: 1rem 1.15rem;
+  border-right: 1px solid rgba(166, 179, 191, 0.08);
+  border-bottom: 1px solid rgba(166, 179, 191, 0.08);
+  color: var(--text-muted);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: var(--text-tech-secondary);
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.systemList li::before {
+  margin-right: 0.55rem;
+  color: rgba(var(--family-accent), 0.72);
+  content: "+";
+}
+
 .visualStage {
   padding: clamp(1.25rem, 3vw, 2.5rem);
   border: 1px solid rgba(166, 179, 191, 0.1);
@@ -482,6 +511,10 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   list-style: none;
+}
+
+.fiveColumnProcessRail {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 .processRail > li {
@@ -756,6 +789,16 @@
   grid-column: 1 / -1;
 }
 
+.indexArchitecture {
+  grid-column: 1 / -1;
+  color: rgba(var(--family-accent), 0.76);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: var(--text-tech-micro);
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
 .indexArrow {
   width: 0.95rem;
   color: rgba(var(--family-accent), 0.72);
@@ -825,6 +868,10 @@
   .processRail {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 3rem 1rem;
+  }
+
+  .fiveColumnProcessRail {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .indexList a {
@@ -928,6 +975,10 @@
   .processRail {
     grid-template-columns: 1fr;
     gap: 0;
+  }
+
+  .fiveColumnProcessRail {
+    grid-template-columns: 1fr;
   }
 
   .processRail > li {

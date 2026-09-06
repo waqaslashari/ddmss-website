@@ -36,6 +36,9 @@ export function InternalIndex({
                   <span className={styles.indexCopy}>
                     <strong>{item.title}</strong>
                     <small>{item.description}</small>
+                    {item.architectureLine ? (
+                      <span className={styles.indexArchitecture}>{item.architectureLine}</span>
+                    ) : null}
                     {item.tags?.length ? (
                       <span className={styles.indexTags}>{item.tags.join(" · ")}</span>
                     ) : null}

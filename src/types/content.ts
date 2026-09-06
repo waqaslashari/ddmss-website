@@ -16,6 +16,24 @@ export type CapabilitySummary = {
   flagship?: boolean;
 };
 
+export type SolutionVisualKey =
+  | "smartParking"
+  | "evCharging"
+  | "digitalTwins"
+  | "intelligentOperations"
+  | "smartFacilities";
+
+export type SolutionSummary = {
+  key: SolutionVisualKey;
+  number: string;
+  slug: string;
+  title: string;
+  description: string;
+  architectureLine: string;
+  tags: readonly string[];
+  href: string;
+};
+
 export type Solution = {
   slug: string;
   title: string;

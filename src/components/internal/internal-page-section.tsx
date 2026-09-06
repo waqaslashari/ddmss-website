@@ -74,12 +74,17 @@ export function DetailGrid({
 export function ProcessRail({
   items,
   ariaLabel,
+  columns,
 }: {
   items: readonly ProcessItem[];
   ariaLabel: string;
+  columns?: 4 | 5;
 }) {
   return (
-    <ol className={styles.processRail} aria-label={ariaLabel}>
+    <ol
+      className={`${styles.processRail} ${columns === 5 ? styles.fiveColumnProcessRail : ""}`}
+      aria-label={ariaLabel}
+    >
       {items.map((item) => (
         <li key={item.number}>
           <div className={styles.processHeader}>
