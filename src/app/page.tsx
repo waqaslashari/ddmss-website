@@ -5,6 +5,7 @@ import { CapabilitiesSection } from "@/components/home/capabilities-section";
 import { CredibilitySection } from "@/components/home/credibility-section";
 import { DigitalTwinExperience } from "@/components/home/digital-twin-experience";
 import { FeaturedWorkSection } from "@/components/home/featured-work-section";
+import { FinalCTASection } from "@/components/home/final-cta-section";
 import { OperatingModelSection } from "@/components/home/operating-model-section";
 import { PhysicalDigitalSection } from "@/components/home/physical-digital-section";
 import { RegionalPresenceSection } from "@/components/home/regional-presence-section";
@@ -26,6 +27,7 @@ export default function Home() {
       <FeaturedWorkSection />
       <RegionalPresenceSection />
       <InsightsSection />
+      <FinalCTASection />
     </>
   );
 }

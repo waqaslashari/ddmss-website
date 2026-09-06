@@ -35,7 +35,7 @@ export function InsightsSection() {
   const [primary, ...secondary] = insights;
 
   return (
-    <section className={styles.section} aria-labelledby="insights-heading">
+    <section id="insights" className={styles.section} aria-labelledby="insights-heading">
       <div className={styles.handoff} aria-hidden="true">
         <span>Region</span><i /><span>Ideas</span>
       </div>

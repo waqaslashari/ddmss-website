@@ -104,7 +104,7 @@ function ExploreLink({ mobile = false }: { mobile?: boolean }) {
 
 export function CapabilitiesSection() {
   return (
-    <section className={styles.section} aria-labelledby="capabilities-heading">
+    <section id="capabilities" className={styles.section} aria-labelledby="capabilities-heading">
       <div className={styles.handoff} aria-hidden="true"><span /></div>
 
       <div className="content-container">

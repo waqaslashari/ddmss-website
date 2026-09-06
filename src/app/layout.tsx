@@ -18,11 +18,18 @@ const jetBrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "DDMSS — Engineering the Digital Future",
+    default: "DDMSS | Digital Transformation, AI & Intelligent Infrastructure",
     template: "%s | DDMSS",
   },
   description:
-    "DDMSS designs intelligent digital ecosystems combining AI, data, software and connected infrastructure.",
+    "Oman-based DDMSS designs digital transformation, AI, data, software and connected infrastructure solutions for businesses and real-world operations across the region.",
+  openGraph: {
+    type: "website",
+    siteName: "DDMSS",
+    title: "DDMSS | Digital Transformation, AI & Intelligent Infrastructure",
+    description:
+      "Oman-based DDMSS designs digital transformation, AI, data, software and connected infrastructure solutions for businesses and real-world operations across the region.",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -34,8 +41,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full">
         <div className="technical-background" aria-hidden="true" />
         <div className="site-shell">
+          <a href="#main-content" className="skip-link">
+            Skip to main content
+          </a>
           <SiteHeader />
-          <main id="main-content" className="flex-1">
+          <main id="main-content" className="flex-1" tabIndex={-1}>
             {children}
           </main>
           <SiteFooter />

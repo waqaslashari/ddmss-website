@@ -89,7 +89,9 @@ export function IndustriesShowcase() {
                 data-active={isActive ? "true" : "false"}
                 onClick={() => setActiveIndex(index)}
                 onFocus={() => setActiveIndex(index)}
-                onPointerEnter={() => setActiveIndex(index)}
+                onPointerEnter={(event) => {
+                  if (event.pointerType === "mouse" && !event.currentTarget.closest('[role="tablist"]')?.contains(document.activeElement)) setActiveIndex(index);
+                }}
                 onKeyDown={(event) => moveSelection(event, index)}
               >
                 <span>{industry.number}</span>

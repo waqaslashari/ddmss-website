@@ -1,18 +1,18 @@
 .section {
   position: relative;
   overflow: clip;
-  padding-block: clamp(7.5rem, 10vw, 10rem) clamp(7.5rem, 10vw, 9rem);
+  padding-block: clamp(7.5rem, 10vw, 10rem) clamp(5rem, 6vw, 6rem);
   background:
-    radial-gradient(circle at 17% 42%, rgba(39, 215, 255, 0.035), transparent 24rem),
-    radial-gradient(circle at 88% 62%, rgba(155, 108, 255, 0.025), transparent 26rem);
+    radial-gradient(circle at 17% 42%, rgba(39, 215, 255, 0.022), transparent 24rem),
+    radial-gradient(circle at 88% 62%, rgba(155, 108, 255, 0.018), transparent 26rem);
 }
 
 .section::before {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(166, 179, 191, 0.018) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(166, 179, 191, 0.018) 1px, transparent 1px);
+    linear-gradient(rgba(166, 179, 191, 0.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(166, 179, 191, 0.012) 1px, transparent 1px);
   background-size: 5rem 5rem;
   mask-image: linear-gradient(to bottom, black, transparent 88%);
   pointer-events: none;
@@ -332,7 +332,7 @@
   position: relative;
   z-index: 1;
   display: flex;
-  margin-top: clamp(5rem, 8vw, 7rem);
+  margin-top: clamp(2.5rem, 3.5vw, 3.5rem);
   justify-content: center;
 }
 
@@ -476,7 +476,7 @@
 
 @media (max-width: 47.999rem) {
   .section {
-    padding-block: 6rem 7.5rem;
+    padding-block: 6rem 4rem;
   }
 
   .section::before {
@@ -533,7 +533,7 @@
 
   .pillar {
     min-height: 0;
-    padding: 4rem 0 3.5rem 3.75rem;
+    padding: 3rem 0 2.75rem 3.75rem;
     border-left: 0;
   }
 
@@ -555,7 +555,7 @@
   }
 
   .stageNode {
-    top: calc(4rem + 2px);
+    top: calc(3rem + 2px);
     left: calc(1.25rem - 4px);
   }
 
@@ -566,7 +566,7 @@
   .pillarVisual {
     width: min(100%, 18rem);
     height: 10.5rem;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
   }
 
   .pillarDescription {
@@ -582,7 +582,7 @@
   }
 
   .sectionExit {
-    margin-top: 5rem;
+    margin-top: 2rem;
   }
 
   @supports (animation-timeline: view()) {

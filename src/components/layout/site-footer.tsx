@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PrimaryButton } from "@/components/ui/primary-button";
+import { ArrowIcon } from "@/components/ui/arrow-icon";
 import { TechnicalLabel } from "@/components/ui/technical-label";
 import { footerNavigation } from "@/lib/constants";
 import { BrandMark } from "./brand-mark";
@@ -57,11 +57,17 @@ export function SiteFooter() {
         <div className="grid gap-6 border-t border-white/[0.08] py-9 md:grid-cols-[1fr_auto] md:items-center md:gap-8 md:py-10">
           <div>
             <TechnicalLabel>Start a project / DDMSS</TechnicalLabel>
-            <p className="mt-3 text-xl font-semibold tracking-[-0.025em]">
-              Engineering the Digital Future.
+            <p className="mt-3 text-base font-semibold tracking-[-0.015em] text-text-secondary">
+              Have a project in mind?
             </p>
           </div>
-          <PrimaryButton href="/contact">Start a Conversation</PrimaryButton>
+          <Link
+            href="/contact"
+            className="group inline-flex min-h-11 items-center gap-3 justify-self-start font-mono text-[var(--text-tech-primary)] font-medium tracking-[0.045em] uppercase transition-colors hover:text-accent-cyan md:justify-self-end"
+          >
+            Contact DDMSS
+            <ArrowIcon className="size-4 text-accent-cyan transition-transform duration-200 group-hover:translate-x-1" />
+          </Link>
         </div>
 
         <div className="flex flex-col gap-3 border-t border-white/[0.08] py-5 text-xs text-text-muted sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:py-6">

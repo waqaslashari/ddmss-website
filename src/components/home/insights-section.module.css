@@ -1,7 +1,7 @@
 .section {
   position: relative;
   overflow: clip;
-  padding: clamp(6.5rem, 11vw, 10rem) 0 clamp(6.5rem, 11vw, 10rem);
+  padding: clamp(6rem, 8vw, 8rem) 0 clamp(5rem, 7vw, 7rem);
   background:
     radial-gradient(circle at 28% 46%, rgba(39, 215, 255, 0.035), transparent 34%),
     linear-gradient(180deg, #040a10, #08111a 52%, #040a10);
@@ -127,7 +127,7 @@
   position: relative;
   z-index: 2;
   display: grid;
-  min-height: clamp(50rem, 60vw, 56rem);
+  min-height: clamp(44rem, 54vw, 50rem);
   grid-template-columns: minmax(0, 0.98fr) minmax(24rem, 1.02fr);
   grid-template-rows: repeat(2, minmax(0, 1fr));
   gap: clamp(1rem, 1.7vw, 1.5rem);
@@ -510,7 +510,7 @@
 
 @media (max-width: 47.999rem) {
   .section {
-    padding: 6rem 0;
+    padding: 6rem 0 4.5rem;
   }
 
   .handoff {

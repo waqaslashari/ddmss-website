@@ -168,7 +168,7 @@ function DigitalTwinVisual() {
       </div>
 
       <dl className={styles.twinMetrics}>
-        <div><dt>Telemetry</dt><dd className={styles.liveStatus}>Live</dd></div>
+        <div><dt>Demo telemetry</dt><dd className={styles.liveStatus}>Live</dd></div>
         <div><dt>Sync</dt><dd>99.8%</dd></div>
         <div><dt>Asset Health</dt><dd>94%</dd></div>
         <div><dt>Predictive Risk</dt><dd className={styles.liveStatus}>Low</dd></div>

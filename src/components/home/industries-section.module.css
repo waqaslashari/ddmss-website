@@ -1,7 +1,7 @@
 .section {
   position: relative;
   overflow: clip;
-  padding: clamp(6rem, 11vw, 10rem) 0 clamp(6.5rem, 12vw, 11rem);
+  padding: clamp(6rem, 8vw, 8rem) 0 clamp(6rem, 8vw, 8rem);
   background:
     linear-gradient(180deg, rgba(7, 16, 25, 0) 0, rgba(4, 10, 16, 0.64) 9rem, rgba(4, 10, 16, 0.92) 100%),
     radial-gradient(circle at 72% 42%, rgba(39, 123, 255, 0.055), transparent 36%);
@@ -314,6 +314,7 @@
 }
 
 .selectorButton:hover { color: var(--text-secondary); background: rgba(39, 215, 255, 0.025); }
+.selectorButton:focus-visible { outline-offset: -3px; }
 .selectorButton[data-active="true"] { color: var(--text-primary); background: linear-gradient(90deg, rgba(39, 215, 255, 0.075), transparent 80%); }
 .selectorButton[data-active="true"]::before { background: var(--cyan); box-shadow: 0 0 0.65rem rgba(39, 215, 255, 0.35); }
 .selectorButton[data-active="true"] > span { color: var(--cyan); }
@@ -612,6 +613,15 @@
   .mobileTechnologies li { font-size: var(--text-tech-secondary); }
   .sectionEnd span { max-width: 6.5rem; }
   .sectionEnd span:last-child { text-align: right; }
+}
+
+@media (min-width: 48rem) and (max-width: 63.999rem) {
+  .mobileJourney { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 1.5rem; }
+  .mobileIndustry { min-width: 0; padding-block: 2rem; align-content: start; }
+  .mobileIndustryHeader { min-height: 6rem; }
+  .mobileIndustry .environment { aspect-ratio: 1.5; }
+  .mobileIndustry .sceneDatum { display: none; }
+  .mobileIndustryHeader h3 { font-size: 1.65rem; }
 }
 
 @media (max-width: 23rem) {

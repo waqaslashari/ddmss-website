@@ -42,7 +42,7 @@ export function HomeHero() {
           <div
             className={`${styles.reveal} ${styles.actions} mt-9 flex flex-col gap-3 sm:flex-row sm:items-center`}
           >
-            <PrimaryButton href="/capabilities" className="w-full sm:w-auto sm:min-w-48">
+            <PrimaryButton href="/#capabilities" className="w-full sm:w-auto sm:min-w-48">
               Explore Capabilities
             </PrimaryButton>
             <SecondaryButton href="/contact" className="w-full sm:w-auto sm:min-w-48">

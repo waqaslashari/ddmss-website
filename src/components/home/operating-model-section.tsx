@@ -75,7 +75,6 @@ export function OperatingModelSection() {
             <li key={pillar.key} className={styles.pillarItem}>
               <article
                 className={`${styles.pillar} ${styles[pillar.key]}`}
-                tabIndex={0}
                 aria-labelledby={`operating-pillar-${pillar.key}`}
               >
                 <span className={styles.stageNode} aria-hidden="true" />

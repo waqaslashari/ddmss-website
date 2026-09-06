@@ -49,6 +49,7 @@ export function DigitalTwinExperience() {
             <h2 id="digital-twin-heading">See Operations Differently.</h2>
             <p>Connect physical assets to live data, synchronized digital representations and predictive intelligence for better operational visibility and decision-making.</p>
             <span className={styles.systemLine}>Physical Asset · Telemetry · Digital Twin · Intelligence</span>
+            <span className={styles.demoLabel}>Illustrative system / demo data</span>
           </header>
 
           <DigitalTwinVisual />

@@ -121,7 +121,7 @@ export function CredibilitySection() {
           <ol className={styles.differentiators} aria-label="Why organizations choose DDMSS">
             {differentiators.map((item) => (
               <li key={item.key}>
-                <article className={styles.differentiator} tabIndex={0}>
+                <article className={styles.differentiator}>
                   <span className={styles.itemLabel}>{item.number} / {item.label}</span>
                   <h3>{item.title}</h3>
                   <DifferentiatorVisual type={item.key} />
@@ -150,7 +150,7 @@ export function CredibilitySection() {
           <ol className={styles.processJourney} aria-label="DDMSS delivery methodology">
             {processSteps.map((step) => (
               <li key={step.key} className={styles.processItem} data-step={step.key}>
-                <article className={styles.processStep} tabIndex={0}>
+                <article className={styles.processStep}>
                   <span className={styles.processNode} aria-hidden="true" />
                   <span className={styles.itemLabel}>{step.number} / {step.title}</span>
                   <h3>{step.title}</h3>

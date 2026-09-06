@@ -2,7 +2,7 @@
   position: relative;
   margin-top: -1px;
   overflow: hidden;
-  padding: clamp(8rem, 11vw, 11rem) 0 clamp(8rem, 12vw, 11rem);
+  padding: clamp(7rem, 8vw, 9rem) 0 clamp(6rem, 8vw, 8rem);
   background:
     radial-gradient(circle at 72% 48%, rgba(57, 123, 255, 0.065), transparent 36rem),
     radial-gradient(circle at 84% 38%, rgba(155, 108, 255, 0.035), transparent 24rem),
@@ -117,6 +117,16 @@
   grid-column: 5 / -1;
   overflow: hidden;
   isolation: isolate;
+}
+
+.demoLabel {
+  display: block;
+  margin-top: 0.75rem;
+  color: var(--text-muted);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: var(--text-tech-secondary);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .twinEnvironment::before {
@@ -311,8 +321,8 @@
 }
 
 .syncStatus {
-  top: 8%;
-  left: 19%;
+  top: 1%;
+  right: 1%;
   display: grid;
   min-width: 8.5rem;
   grid-template-columns: 1fr auto;
@@ -403,7 +413,7 @@
   align-items: center;
   gap: 0.4rem;
   margin-top: 0.38rem;
-  color: var(--text-subtle);
+  color: var(--text-muted);
   font-size: var(--text-tech-micro);
   letter-spacing: 0.035em;
 }
@@ -493,7 +503,7 @@
   position: relative;
   z-index: 1;
   display: flex;
-  margin-top: clamp(5rem, 8vw, 7rem);
+  margin-top: clamp(3rem, 4vw, 4rem);
   align-items: center;
   justify-content: center;
 }

@@ -2,7 +2,7 @@
   position: relative;
   margin-top: -1px;
   overflow: clip;
-  padding-block: clamp(7rem, 10vw, 9.5rem) clamp(8rem, 12vw, 10.5rem);
+  padding-block: clamp(6.25rem, 8vw, 7.5rem) clamp(6.5rem, 8.5vw, 8rem);
   background:
     radial-gradient(circle at 62% 4%, rgba(39, 215, 255, 0.055), transparent 25rem),
     radial-gradient(circle at 44% 68%, rgba(57, 123, 255, 0.045), transparent 34rem);
@@ -123,8 +123,8 @@
 .visual {
   position: relative;
   z-index: 1;
-  min-height: 36rem;
-  margin-top: clamp(5rem, 8vw, 8rem);
+  min-height: 28rem;
+  margin-top: clamp(4rem, 6vw, 6rem);
 }
 
 .network {
@@ -416,7 +416,7 @@
   z-index: 1;
   display: flex;
   max-width: 58rem;
-  margin: clamp(6.5rem, 9vw, 8.5rem) auto 0;
+  margin: clamp(4rem, 5.5vw, 5.5rem) auto 0;
   flex-direction: column;
   align-items: center;
   text-align: center;
@@ -424,8 +424,8 @@
 
 .result::before {
   width: 1px;
-  height: 5rem;
-  margin-bottom: 2.75rem;
+  height: 3.5rem;
+  margin-bottom: 2rem;
   background: linear-gradient(to bottom, rgba(39, 215, 255, 0.45), transparent);
   content: "";
 }
@@ -539,7 +539,7 @@
   }
 
   .visual {
-    min-height: 34rem;
+    min-height: 30rem;
   }
 
   .domain {
@@ -556,7 +556,7 @@
 
 @media (max-width: 47.999rem) {
   .section {
-    padding-block: 5.75rem 7.5rem;
+    padding-block: 5rem 6rem;
   }
 
   .section::before {
@@ -594,7 +594,7 @@
 
   .visual {
     min-height: 0;
-    margin-top: 4.5rem;
+    margin-top: 3.5rem;
     padding-bottom: 1rem;
   }
 
@@ -606,7 +606,7 @@
   .domainList {
     position: relative;
     display: grid;
-    gap: 2.25rem;
+    gap: 1.75rem;
   }
 
   .domainList::before {
@@ -655,7 +655,7 @@
     inset: auto;
     display: grid;
     width: 100%;
-    margin-top: 3.5rem;
+    margin-top: 2.75rem;
     grid-template-columns: 4rem minmax(0, 1fr);
     gap: 1.25rem;
     align-items: center;
@@ -689,15 +689,15 @@
   }
 
   .result {
-    margin-top: 6.5rem;
+    margin-top: 4.5rem;
     align-items: flex-start;
     text-align: left;
   }
 
   .result::before {
-    height: 3.5rem;
+    height: 2.75rem;
     margin-left: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
 
   .result h3 {

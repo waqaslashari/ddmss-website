@@ -1,7 +1,7 @@
 .section {
   position: relative;
   overflow: hidden;
-  padding: clamp(7rem, 11vw, 10rem) 0 clamp(8rem, 12vw, 11rem);
+  padding: clamp(5.5rem, 6vw, 6.5rem) 0 clamp(8rem, 12vw, 11rem);
   background:
     radial-gradient(circle at 76% 55%, rgba(57, 123, 255, 0.055), transparent 29rem),
     linear-gradient(180deg, rgba(4, 10, 16, 0.06), rgba(4, 10, 16, 0.58));
@@ -187,15 +187,15 @@
   --panel-accent: 39, 215, 255;
   position: relative;
   display: flex;
-  min-height: 33rem;
+  min-height: 30rem;
   overflow: hidden;
   flex-direction: column;
-  padding: clamp(1.5rem, 2.6vw, 2.25rem);
-  border: 1px solid rgba(166, 179, 191, 0.085);
+  padding: clamp(1.4rem, 2.2vw, 2rem);
+  border: 1px solid rgba(166, 179, 191, 0.055);
   border-radius: 10px;
   background:
     radial-gradient(circle at 82% 28%, rgba(var(--panel-accent), 0.045), transparent 18rem),
-    linear-gradient(145deg, rgba(16, 30, 43, 0.58), rgba(7, 16, 25, 0.31));
+    linear-gradient(145deg, rgba(16, 30, 43, 0.62), rgba(7, 16, 25, 0.34));
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.022);
   transition: border-color 200ms ease, background-color 200ms ease, box-shadow 200ms ease;
 }
@@ -227,7 +227,7 @@
 
 .panel:hover,
 .panel:focus-visible {
-  border-color: rgba(var(--panel-accent), 0.25);
+  border-color: rgba(var(--panel-accent), 0.2);
   background-color: rgba(16, 30, 43, 0.26);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035), 0 18px 60px rgba(0, 0, 0, 0.13);
 }
@@ -294,7 +294,7 @@
 
 .panel h3 {
   max-width: 20ch;
-  margin-top: 1.25rem;
+  margin-top: 1.1rem;
   color: var(--text-primary);
   font-size: clamp(1.55rem, 2.3vw, 2rem);
   font-weight: 560;
@@ -305,10 +305,10 @@
 
 .visual {
   display: flex;
-  height: 13.2rem;
+  height: 11.9rem;
   align-items: center;
-  margin-top: 1.3rem;
-  opacity: 0.74;
+  margin-top: 1rem;
+  opacity: 0.82;
   transition: opacity 220ms ease, filter 220ms ease;
 }
 
@@ -321,14 +321,15 @@
 .visualSvg,
 .flagshipSvg {
   display: block;
-  width: 100%;
+  width: 108%;
   height: 100%;
+  margin-inline: -4%;
   overflow: visible;
 }
 
 .description {
   max-width: 43rem;
-  margin-top: auto;
+  margin-top: 1rem;
   color: var(--text-secondary);
   font-size: 1rem;
   line-height: 1.68;
@@ -338,9 +339,9 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem 1rem;
-  margin-top: 1.3rem;
-  padding-top: 1.15rem;
-  border-top: 1px solid rgba(166, 179, 191, 0.08);
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(166, 179, 191, 0.06);
   color: color-mix(in srgb, var(--text-muted) 86%, var(--text-secondary));
   font-family: var(--font-jetbrains-mono), monospace;
   font-size: var(--text-tech-secondary);
@@ -362,6 +363,7 @@
   grid-template-rows: auto 1fr;
   column-gap: clamp(2.5rem, 6vw, 6rem);
   padding: clamp(2rem, 3.5vw, 3.5rem);
+  border-color: rgba(166, 179, 191, 0.075);
   background:
     radial-gradient(circle at 74% 48%, rgba(57, 123, 255, 0.075), transparent 27rem),
     linear-gradient(135deg, rgba(16, 30, 43, 0.68), rgba(7, 16, 25, 0.34));
@@ -652,18 +654,18 @@
 .svgActivePath,
 .telemetryPath,
 .telemetryActive { fill: none; stroke-linecap: square; stroke-linejoin: miter; }
-.svgPath { stroke: rgba(112, 129, 142, 0.48); stroke-width: 1; }
-.svgPathMuted { stroke: rgba(112, 129, 142, 0.25); stroke-width: 1; stroke-dasharray: 3 5; }
-.svgActivePath { stroke: rgba(39, 215, 255, 0.68); stroke-width: 1.25; stroke-dasharray: 4 7; animation: dataFlow 5s linear infinite; }
-.svgSurface { fill: rgba(11, 22, 34, 0.66); stroke: rgba(112, 129, 142, 0.65); stroke-width: 1; }
-.svgAccent { fill: none; stroke: rgba(39, 215, 255, 0.68); stroke-width: 1.35; }
+.svgPath { stroke: rgba(112, 129, 142, 0.54); stroke-width: 1.08; }
+.svgPathMuted { stroke: rgba(112, 129, 142, 0.29); stroke-width: 1.05; stroke-dasharray: 3 5; }
+.svgActivePath { stroke: rgba(39, 215, 255, 0.74); stroke-width: 1.35; stroke-dasharray: 4 7; animation: dataFlow 5s linear infinite; }
+.svgSurface { fill: rgba(11, 22, 34, 0.68); stroke: rgba(112, 129, 142, 0.7); stroke-width: 1.08; }
+.svgAccent { fill: none; stroke: rgba(39, 215, 255, 0.75); stroke-width: 1.45; }
 .svgViolet { fill: rgba(155, 108, 255, 0.1); stroke: rgba(155, 108, 255, 0.68); stroke-width: 1.2; }
 .svgCore { fill: rgba(57, 123, 255, 0.07); stroke: rgba(39, 215, 255, 0.68); stroke-width: 1.2; }
 .svgAnalytics { fill: none; stroke: rgba(155, 108, 255, 0.65); stroke-width: 1.3; }
 .svgModule { fill: rgba(57, 123, 255, 0.06); stroke: rgba(112, 129, 142, 0.55); stroke-width: 0.9; }
 .svgSignal { fill: none; stroke: rgba(39, 215, 255, 0.7); stroke-width: 1.1; }
 .svgStatus { fill: rgba(68, 226, 138, 0.75); }
-.svgNode { fill: var(--bg-primary); stroke: rgba(112, 129, 142, 0.8); stroke-width: 1; }
+.svgNode { fill: var(--bg-primary); stroke: rgba(112, 129, 142, 0.86); stroke-width: 1.05; }
 .svgNodeActive { fill: rgba(39, 215, 255, 0.8); stroke: rgba(39, 215, 255, 0.95); stroke-width: 1; }
 .svgMeta,
 .svgMetaMuted,
@@ -693,10 +695,10 @@
 }
 
 @media (max-width: 63.999rem) {
-  .section { padding-top: 7rem; }
+  .section { padding-top: 6rem; }
   .intro { gap: 3rem; }
   .heading { font-size: clamp(3rem, 6.5vw, 4.25rem); }
-  .panel { min-height: 31rem; }
+  .panel { min-height: 28.5rem; }
   .visual { height: 11.5rem; }
   .flagship { min-height: 28rem; grid-template-columns: minmax(16rem, 0.75fr) minmax(0, 1.25fr); }
   .flagship .visual { height: 18rem; }
@@ -705,7 +707,7 @@
 }
 
 @media (max-width: 47.999rem) {
-  .section { padding: 6.5rem 0 7.5rem; }
+  .section { padding: 4rem 0 7.5rem; }
   .section::before { background-size: 3.5rem 3.5rem; }
   .handoff { height: 3.5rem; }
   .intro { display: block; }

@@ -8,7 +8,7 @@ import styles from "./solutions-section.module.css";
 
 export function SolutionsSection() {
   return (
-    <section className={styles.section} aria-labelledby="solutions-heading">
+    <section id="solutions" className={styles.section} aria-labelledby="solutions-heading">
       <div className={styles.handoff} aria-hidden="true"><span /></div>
       <div className="content-container">
         <header className={styles.intro}>
@@ -21,6 +21,8 @@ export function SolutionsSection() {
             <Link href="/solutions" className={styles.desktopCta}>Explore All Solutions<ArrowIcon className={styles.arrow} /></Link>
           </div>
         </header>
+
+        <p className={styles.demoLabel}>Illustrative system views / demo data</p>
 
         <SolutionsShowcase solutions={solutions} />
 

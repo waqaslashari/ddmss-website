@@ -1,6 +1,4 @@
-"use client";
-
-import { useRef, type PointerEvent } from "react";
+import { EcosystemFrame } from "./ecosystem-frame";
 import styles from "./hero-ecosystem.module.css";
 
 type AssetImageProps = { href: string; x: number; y: number; width: number; height: number };
@@ -10,22 +8,8 @@ function AssetImage({ href, x, y, width, height }: AssetImageProps) {
 }
 
 export function HeroEcosystem() {
-  const visualRef = useRef<HTMLElement>(null);
-
-  function handlePointerMove(event: PointerEvent<HTMLElement>) {
-    if (event.pointerType === "touch" || !visualRef.current) return;
-    const bounds = visualRef.current.getBoundingClientRect();
-    visualRef.current.style.setProperty("--pointer-x", (((event.clientX - bounds.left) / bounds.width) - 0.5).toFixed(3));
-    visualRef.current.style.setProperty("--pointer-y", (((event.clientY - bounds.top) / bounds.height) - 0.5).toFixed(3));
-  }
-
-  function resetPointer() {
-    visualRef.current?.style.setProperty("--pointer-x", "0");
-    visualRef.current?.style.setProperty("--pointer-y", "0");
-  }
-
   return (
-    <figure ref={visualRef} className={styles.ecosystem} role="img" aria-label="Illustration of physical infrastructure, smart mobility, connected data, software and an AI intelligence core working as one digital ecosystem." onPointerMove={handlePointerMove} onPointerLeave={resetPointer}>
+    <EcosystemFrame>
       <svg className={styles.scene} viewBox="40 45 680 581" fill="none" aria-hidden="true" focusable="false">
         <defs>
           <linearGradient id="ddmss-plane" x1="82" y1="320" x2="680" y2="575"><stop stopColor="#101E2B" stopOpacity="0.78" /><stop offset="0.62" stopColor="#0B1622" stopOpacity="0.48" /><stop offset="1" stopColor="#071019" stopOpacity="0.16" /></linearGradient>
@@ -67,36 +51,36 @@ export function HeroEcosystem() {
         </g>
 
         <g className={`${styles.backLayer} ${styles.desktopOnly}`}>
-          <g className={styles.assetGroup}><AssetImage href="/visuals/cloud-server.png" x={414} y={70} width={116} height={78} /><text x="428" y="160" className={styles.labelStrong}>DATA / CLOUD</text><text x="428" y="173" className={styles.labelMuted}>STREAM / CONNECTED</text></g>
-          <g className={styles.assetGroup}><AssetImage href="/visuals/rack-server.png" x={556} y={116} width={94} height={141} /><text x="558" y="273" className={styles.labelStrong}>SOFTWARE / COMPUTE</text><text x="558" y="286" className={styles.labelMuted}>SYSTEMS / OPERATIONS</text></g>
+          <g className={styles.assetGroup}><AssetImage href="/visuals/hero/cloud-server.webp" x={414} y={70} width={116} height={78} /><text x="428" y="160" className={styles.labelStrong}>DATA / CLOUD</text><text x="428" y="173" className={styles.labelMuted}>STREAM / CONNECTED</text></g>
+          <g className={styles.assetGroup}><AssetImage href="/visuals/hero/rack-server.webp" x={556} y={116} width={94} height={141} /><text x="558" y="273" className={styles.labelStrong}>SOFTWARE / COMPUTE</text><text x="558" y="286" className={styles.labelMuted}>SYSTEMS / OPERATIONS</text></g>
         </g>
         <g className={`${styles.midLayer} ${styles.desktopOnly}`}>
-          <g className={styles.assetGroup}><AssetImage href="/visuals/industrial-asset.png" x={74} y={326} width={205} height={137} /><text x="88" y="480" className={styles.labelStrong}>INDUSTRIAL ASSET</text><text x="88" y="493" className={styles.labelMuted}>DIGITAL TWIN / EDGE</text></g>
-          <g className={styles.assetGroup}><AssetImage href="/visuals/smart-facility.png" x={528} y={288} width={190} height={127} /><text x="578" y="430" className={styles.labelStrong}>SMART FACILITY</text><text x="578" y="443" className={styles.labelMuted}>BUILDING / CONNECTED</text></g>
+          <g className={styles.assetGroup}><AssetImage href="/visuals/hero/industrial-asset.webp" x={74} y={326} width={205} height={137} /><text x="88" y="480" className={styles.labelStrong}>INDUSTRIAL ASSET</text><text x="88" y="493" className={styles.labelMuted}>DIGITAL TWIN / EDGE</text></g>
+          <g className={styles.assetGroup}><AssetImage href="/visuals/hero/smart-facility.webp" x={528} y={288} width={190} height={127} /><text x="578" y="430" className={styles.labelStrong}>SMART FACILITY</text><text x="578" y="443" className={styles.labelMuted}>BUILDING / CONNECTED</text></g>
         </g>
         <g className={`${styles.frontLayer} ${styles.desktopOnly}`}>
-          <g className={styles.assetGroup}><AssetImage href="/visuals/smart-parking.png" x={390} y={432} width={190} height={127} /><text x="430" y="577" className={styles.labelStrong}>SMART PARKING</text><text x="430" y="590" className={styles.labelMuted}>ZONE A / CONNECTED</text></g>
-          <g className={styles.assetGroup}><AssetImage href="/visuals/smart-mobility-ev.png" x={205} y={467} width={170} height={113} /><text x="232" y="591" className={styles.labelStrong}>SMART MOBILITY</text><text x="232" y="604" className={styles.labelMuted}>VEHICLE / EDGE</text></g>
+          <g className={styles.assetGroup}><AssetImage href="/visuals/hero/smart-parking.webp" x={390} y={432} width={190} height={127} /><text x="430" y="577" className={styles.labelStrong}>SMART PARKING</text><text x="430" y="590" className={styles.labelMuted}>ZONE A / CONNECTED</text></g>
+          <g className={styles.assetGroup}><AssetImage href="/visuals/hero/smart-mobility-ev.webp" x={205} y={467} width={170} height={113} /><text x="232" y="591" className={styles.labelStrong}>SMART MOBILITY</text><text x="232" y="604" className={styles.labelMuted}>VEHICLE / EDGE</text></g>
         </g>
 
         <g className={`${styles.midLayer} ${styles.desktopOnly}`}>
-          <g className={styles.assetGroup}><AssetImage href="/visuals/ev-charger.png" x={198} y={149} width={66} height={99} /><text x="190" y="265" className={styles.labelStrong}>EV NETWORK</text><text x="190" y="278" className={styles.labelMuted}>CHARGER / READY</text></g>
+          <g className={styles.assetGroup}><AssetImage href="/visuals/hero/ev-charger.webp" x={198} y={149} width={66} height={99} /><text x="190" y="265" className={styles.labelStrong}>EV NETWORK</text><text x="190" y="278" className={styles.labelMuted}>CHARGER / READY</text></g>
         </g>
 
         <g className={`${styles.backLayer} ${styles.mobileOnly}`}>
-          <g className={styles.assetGroup}><AssetImage href="/visuals/cloud-server.png" x={330} y={55} width={125} height={83} /></g>
-          <g className={styles.assetGroup}><AssetImage href="/visuals/rack-server.png" x={564} y={105} width={72} height={108} /></g>
+          <g className={styles.assetGroup}><AssetImage href="/visuals/hero/cloud-server.webp" x={330} y={55} width={125} height={83} /></g>
+          <g className={styles.assetGroup}><AssetImage href="/visuals/hero/rack-server.webp" x={564} y={105} width={72} height={108} /></g>
         </g>
         <g className={`${styles.midLayer} ${styles.mobileOnly}`}>
-          <g className={styles.assetGroup}><AssetImage href="/visuals/industrial-asset.png" x={55} y={342} width={158} height={105} /></g>
-          <g className={styles.assetGroup}><AssetImage href="/visuals/smart-facility.png" x={528} y={326} width={155} height={103} /></g>
+          <g className={styles.assetGroup}><AssetImage href="/visuals/hero/industrial-asset.webp" x={55} y={342} width={158} height={105} /></g>
+          <g className={styles.assetGroup}><AssetImage href="/visuals/hero/smart-facility.webp" x={528} y={326} width={155} height={103} /></g>
         </g>
         <g className={`${styles.frontLayer} ${styles.mobileOnly}`}>
-          <g className={styles.assetGroup}><AssetImage href="/visuals/smart-parking.png" x={410} y={452} width={148} height={99} /></g>
-          <g className={styles.assetGroup}><AssetImage href="/visuals/smart-mobility-ev.png" x={185} y={466} width={152} height={101} /></g>
+          <g className={styles.assetGroup}><AssetImage href="/visuals/hero/smart-parking.webp" x={410} y={452} width={148} height={99} /></g>
+          <g className={styles.assetGroup}><AssetImage href="/visuals/hero/smart-mobility-ev.webp" x={185} y={466} width={152} height={101} /></g>
         </g>
         <g className={`${styles.midLayer} ${styles.mobileOnly}`}>
-          <g className={styles.assetGroup}><AssetImage href="/visuals/ev-charger.png" x={175} y={115} width={58} height={87} /></g>
+          <g className={styles.assetGroup}><AssetImage href="/visuals/hero/ev-charger.webp" x={175} y={115} width={58} height={87} /></g>
         </g>
 
         <g className={styles.coreLayer}>
@@ -123,6 +107,6 @@ export function HeroEcosystem() {
           <text x="204" y="220" textAnchor="middle" className={styles.mobileLabel}>EV NETWORK</text><text x="392" y="153" textAnchor="middle" className={styles.mobileLabel}>DATA / CLOUD</text><text x="600" y="228" textAnchor="middle" className={styles.mobileLabel}>SOFTWARE</text><text x="374" y="376" textAnchor="middle" className={styles.mobileLabel}>AI CORE</text><text x="134" y="465" textAnchor="middle" className={styles.mobileLabel}>INDUSTRIAL</text><text x="261" y="588" textAnchor="middle" className={styles.mobileLabel}>MOBILITY</text><text x="484" y="570" textAnchor="middle" className={styles.mobileLabel}>PARKING</text><text x="605" y="446" textAnchor="middle" className={styles.mobileLabel}>FACILITY</text>
         </g>
       </svg>
-    </figure>
+    </EcosystemFrame>
   );
 }

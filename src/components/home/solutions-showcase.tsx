@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState, type KeyboardEvent } from "react";
 
 import { ArrowIcon } from "@/components/ui/arrow-icon";
 import type { Solution, SolutionKey } from "./solutions-data";
@@ -136,24 +136,46 @@ function ExploreSolution({ solution }: { solution: Solution }) {
 
 export function SolutionsShowcase({ solutions }: SolutionsShowcaseProps) {
   const [activeKey, setActiveKey] = useState<SolutionKey>("smartParking");
+  const selectorRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const activeSolution = solutions.find((solution) => solution.key === activeKey) ?? solutions[0];
+
+  function moveSelection(event: KeyboardEvent<HTMLButtonElement>, index: number) {
+    let nextIndex = index;
+    if (event.key === "ArrowDown" || event.key === "ArrowRight") nextIndex = (index + 1) % solutions.length;
+    else if (event.key === "ArrowUp" || event.key === "ArrowLeft") nextIndex = (index - 1 + solutions.length) % solutions.length;
+    else if (event.key === "Home") nextIndex = 0;
+    else if (event.key === "End") nextIndex = solutions.length - 1;
+    else return;
+    event.preventDefault();
+    setActiveKey(solutions[nextIndex].key);
+    selectorRefs.current[nextIndex]?.focus();
+  }
 
   return (
     <>
       <div className={styles.desktopShowcase}>
-        <nav className={styles.selector} aria-label="Select a solution">
+        <div className={styles.selector}>
           <p className={styles.selectorLabel}>Solution Index / 01—05</p>
-          {solutions.map((solution) => {
+          <div role="tablist" aria-label="Select a solution" aria-orientation="vertical">
+          {solutions.map((solution, index) => {
             const isActive = solution.key === activeSolution.key;
             return (
               <button
                 key={solution.key}
+                ref={(element) => { selectorRefs.current[index] = element; }}
+                id={`solution-tab-${solution.key}`}
                 type="button"
+                role="tab"
                 className={styles.selectorButton}
-                aria-pressed={isActive}
+                aria-selected={isActive}
+                aria-controls="solution-active-panel"
+                tabIndex={isActive ? 0 : -1}
                 onClick={() => setActiveKey(solution.key)}
                 onFocus={() => setActiveKey(solution.key)}
-                onMouseEnter={() => setActiveKey(solution.key)}
+                onPointerEnter={(event) => {
+                  if (event.pointerType === "mouse" && !event.currentTarget.closest('[role="tablist"]')?.contains(document.activeElement)) setActiveKey(solution.key);
+                }}
+                onKeyDown={(event) => moveSelection(event, index)}
               >
                 <span className={styles.selectorNumber}>{solution.number}</span>
                 <span>{solution.title}</span>
@@ -161,9 +183,10 @@ export function SolutionsShowcase({ solutions }: SolutionsShowcaseProps) {
               </button>
             );
           })}
-        </nav>
+          </div>
+        </div>
 
-        <article key={activeSolution.key} className={styles.activeSolution} aria-live="polite">
+        <article key={activeSolution.key} id="solution-active-panel" role="tabpanel" aria-labelledby={`solution-tab-${activeSolution.key}`} className={styles.activeSolution}>
           <SolutionVisual solutionKey={activeSolution.key} />
           <div className={styles.activeCopy}>
             <div>

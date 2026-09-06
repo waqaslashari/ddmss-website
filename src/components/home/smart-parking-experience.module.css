@@ -2,7 +2,7 @@
   position: relative;
   margin-top: -1px;
   overflow: hidden;
-  padding: clamp(7.5rem, 10vw, 10rem) 0 clamp(8rem, 11vw, 10rem);
+  padding: clamp(7rem, 8vw, 8rem) 0 clamp(6rem, 8vw, 8rem);
   background:
     radial-gradient(circle at 78% 40%, rgba(39, 215, 255, 0.055), transparent 35rem),
     radial-gradient(circle at 22% 56%, rgba(57, 123, 255, 0.035), transparent 28rem),
@@ -544,7 +544,7 @@
   position: relative;
   z-index: 1;
   display: flex;
-  margin-top: clamp(5rem, 8vw, 7rem);
+  margin-top: clamp(3rem, 4vw, 4rem);
   align-items: center;
   justify-content: center;
   gap: 1rem;

@@ -9,7 +9,7 @@ import styles from "./industries-section.module.css";
 
 export function IndustriesSection() {
   return (
-    <section className={styles.section} aria-labelledby="industries-heading">
+    <section id="industries" className={styles.section} aria-labelledby="industries-heading">
       <div className={styles.handoff} aria-hidden="true">
         <span>One Technology Foundation</span>
         <i />

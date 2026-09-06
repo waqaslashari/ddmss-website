@@ -1,134 +1,125 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState, type KeyboardEvent } from "react";
 import { PrimaryButton } from "@/components/ui/primary-button";
 import { primaryNavigation } from "@/lib/constants";
 
 export function MobileNavigation() {
   const [isOpen, setIsOpen] = useState(false);
   const navigationId = useId();
-  const navigationRootRef = useRef<HTMLDivElement>(null);
-  const menuScrollRef = useRef<HTMLDivElement>(null);
-  const triggerRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
     if (!isOpen) return;
 
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setIsOpen(false);
-        requestAnimationFrame(() => triggerRef.current?.focus());
-        return;
-      }
-
-      if (event.key !== "Tab") return;
-
-      const focusable = navigationRootRef.current?.querySelectorAll<HTMLElement>(
-        'button, a[href]:not([tabindex="-1"])',
-      );
-
-      if (!focusable?.length) return;
-
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    };
-
     const previousOverflow = document.body.style.overflow;
-    if (menuScrollRef.current) {
-      menuScrollRef.current.scrollTop = 0;
-      menuScrollRef.current.scrollLeft = 0;
-    }
     document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", handleKeyDown);
+    const desktop = window.matchMedia("(min-width: 64rem)");
+    const closeOnDesktop = () => {
+      if (desktop.matches) dialogRef.current?.close();
+    };
+    desktop.addEventListener("change", closeOnDesktop);
+    closeOnDesktop();
 
     return () => {
       document.body.style.overflow = previousOverflow;
-      window.removeEventListener("keydown", handleKeyDown);
+      desktop.removeEventListener("change", closeOnDesktop);
     };
   }, [isOpen]);
 
+  function openNavigation() {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+    // The native top layer escapes the scrolled header's backdrop-filter.
+    // It also makes the page inert, traps focus and restores it on dismissal.
+    dialog.showModal();
+    dialog.scrollTop = 0;
+    dialog.scrollLeft = 0;
+    setIsOpen(true);
+  }
+
+  function closeNavigation() {
+    dialogRef.current?.close();
+  }
+
+  function containTabFocus(event: KeyboardEvent<HTMLDialogElement>) {
+    if (event.key !== "Tab") return;
+    const controls = event.currentTarget.querySelectorAll<HTMLElement>("button, a[href]");
+    const first = controls[0];
+    const last = controls[controls.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last?.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first?.focus();
+    }
+  }
+
   return (
-    <div ref={navigationRootRef} className="lg:hidden">
+    <div className="lg:hidden">
       <button
-        ref={triggerRef}
         type="button"
-        className="relative z-20 grid size-11 place-items-center rounded-lg border border-white/10 bg-white/[0.025] text-foreground"
+        className="grid size-11 place-items-center rounded-lg border border-white/10 bg-white/[0.025] text-foreground"
         aria-controls={navigationId}
         aria-expanded={isOpen}
-        aria-label={isOpen ? "Close navigation" : "Open navigation"}
-        onClick={() => {
-          if (!isOpen && menuScrollRef.current) {
-            menuScrollRef.current.scrollTop = 0;
-            menuScrollRef.current.scrollLeft = 0;
-          }
-          setIsOpen((current) => !current);
-        }}
+        aria-haspopup="dialog"
+        aria-label="Open navigation"
+        onClick={openNavigation}
       >
-        <span className="sr-only">{isOpen ? "Close navigation" : "Open navigation"}</span>
         <span className="relative block h-4 w-5" aria-hidden="true">
-          <span
-            className={`absolute top-1 left-0 h-px w-5 bg-current transition-transform duration-200 ${isOpen ? "translate-y-[3px] rotate-45" : ""}`}
-          />
-          <span
-            className={`absolute bottom-1 left-0 h-px w-5 bg-current transition-transform duration-200 ${isOpen ? "-translate-y-[3px] -rotate-45" : ""}`}
-          />
+          <span className="absolute top-1 left-0 h-px w-5 bg-current" />
+          <span className="absolute bottom-1 left-0 h-px w-5 bg-current" />
         </span>
       </button>
 
-      <div
-        ref={menuScrollRef}
+      <dialog
+        ref={dialogRef}
         id={navigationId}
-        className={`fixed inset-0 z-10 overflow-y-auto overscroll-contain bg-background-deep/98 px-(--page-gutter) pt-[calc(var(--header-height-scrolled)+3rem)] pb-8 backdrop-blur-2xl transition-[opacity,visibility] duration-200 ${
-          isOpen ? "visible opacity-100" : "invisible opacity-0"
-        }`}
-        aria-hidden={!isOpen}
-        role="dialog"
-        aria-modal="true"
+        className="fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none overflow-y-auto overscroll-contain border-0 bg-background-deep/98 px-(--page-gutter) pt-[calc(var(--header-height-scrolled)+3rem)] pb-8 text-foreground backdrop:bg-background-deep/90"
         aria-label="Site navigation"
+        onClose={() => setIsOpen(false)}
+        onKeyDown={containTabFocus}
       >
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(166,179,191,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(166,179,191,0.035)_1px,transparent_1px)] bg-[size:3.5rem_3.5rem]" />
+        <button
+          type="button"
+          autoFocus
+          aria-label="Close navigation"
+          onClick={closeNavigation}
+          className="absolute top-4 right-(--page-gutter) grid size-11 place-items-center rounded-lg border border-white/10 bg-white/[0.025] text-foreground"
+        >
+          <span className="relative block h-4 w-5" aria-hidden="true">
+            <span className="absolute top-2 left-0 h-px w-5 rotate-45 bg-current" />
+            <span className="absolute top-2 left-0 h-px w-5 -rotate-45 bg-current" />
+          </span>
+        </button>
         <nav className="relative flex min-h-full flex-col" aria-label="Mobile navigation">
           <span className="mb-8 font-mono text-[0.6875rem] tracking-[0.16em] text-text-muted uppercase">
             Navigation / 01—06
           </span>
-          <ul className="flex flex-col border-t border-white/[0.08]">
+          <ul className="mb-8 flex flex-col border-t border-white/[0.08]">
             {primaryNavigation.map((item, index) => (
               <li key={item.href} className="border-b border-white/[0.08]">
                 <Link
                   href={item.href}
-                  className={`flex items-center justify-between py-4 text-[clamp(1.5rem,7vw,2.25rem)] font-semibold tracking-[-0.035em] transition-colors hover:text-accent-cyan ${
-                    isOpen ? "pointer-events-auto" : "pointer-events-none"
-                  }`}
-                  tabIndex={isOpen ? 0 : -1}
-                  onClick={() => setIsOpen(false)}
+                  className="flex items-center justify-between py-4 text-[clamp(1.5rem,7vw,2.25rem)] font-semibold tracking-[-0.035em] transition-colors hover:text-accent-cyan"
+                  onClick={closeNavigation}
                 >
                   {item.label}
-                  <span className="font-mono text-[0.625rem] tracking-wider text-text-subtle">
+                  <span className="font-mono text-[0.625rem] tracking-wider text-text-muted">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </Link>
               </li>
             ))}
           </ul>
-          <PrimaryButton
-            href="/contact"
-            className={`mt-auto w-full ${isOpen ? "pointer-events-auto" : "pointer-events-none"}`}
-            tabIndex={isOpen ? 0 : -1}
-            onClick={() => setIsOpen(false)}
-          >
+          <PrimaryButton href="/contact" className="mt-auto w-full shrink-0" onClick={closeNavigation}>
             Let&apos;s Talk
           </PrimaryButton>
         </nav>
-      </div>
+      </dialog>
     </div>
   );
 }
