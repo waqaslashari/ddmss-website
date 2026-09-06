@@ -44,6 +44,14 @@ export type Solution = {
   technologies: string[];
 };
 
+export type IndustryVisualKey =
+  | "energy"
+  | "government"
+  | "smartCities"
+  | "mobility"
+  | "manufacturing"
+  | "logistics";
+
 export type Industry = {
   slug: string;
   title: string;

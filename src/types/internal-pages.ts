@@ -1,4 +1,8 @@
-import type { CapabilityVisualKey, SolutionVisualKey } from "@/types/content";
+import type {
+  CapabilityVisualKey,
+  IndustryVisualKey,
+  SolutionVisualKey,
+} from "@/types/content";
 
 export type PageFamily =
   | "capability"
@@ -102,11 +106,14 @@ export type SolutionPageContent = InternalPageContentBase & {
 
 export type IndustryPageContent = InternalPageContentBase & {
   family: "industry";
+  visualKey: IndustryVisualKey;
   operationalContext: string;
   challenges: readonly DetailItem[];
   capabilities: readonly ContentReference[];
   solutions: readonly ContentReference[];
-  architecture?: string;
+  architecture: string;
+  application: readonly ProcessItem[];
+  relatedWork: readonly ContentReference[];
 };
 
 export type WorkPageContent = InternalPageContentBase & {

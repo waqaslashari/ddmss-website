@@ -78,11 +78,11 @@ export function ProcessRail({
 }: {
   items: readonly ProcessItem[];
   ariaLabel: string;
-  columns?: 4 | 5;
+  columns?: 4 | 5 | 6;
 }) {
   return (
     <ol
-      className={`${styles.processRail} ${columns === 5 ? styles.fiveColumnProcessRail : ""}`}
+      className={`${styles.processRail} ${columns === 5 ? styles.fiveColumnProcessRail : ""} ${columns === 6 ? styles.sixColumnProcessRail : ""}`}
       aria-label={ariaLabel}
     >
       {items.map((item) => (
