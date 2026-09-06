@@ -43,14 +43,16 @@ export function DetailGrid({
   items,
   ariaLabel,
   compact = false,
+  columns,
 }: {
   items: readonly DetailItem[];
   ariaLabel: string;
   compact?: boolean;
+  columns?: 3 | 4;
 }) {
   return (
     <ul
-      className={`${styles.detailGrid} ${compact ? styles.compactDetailGrid : ""}`}
+      className={`${styles.detailGrid} ${compact ? styles.compactDetailGrid : ""} ${columns === 3 ? styles.threeColumnDetailGrid : ""}`}
       aria-label={ariaLabel}
     >
       {items.map((item, index) => (

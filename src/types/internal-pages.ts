@@ -1,3 +1,5 @@
+import type { CapabilityVisualKey } from "@/types/content";
+
 export type PageFamily =
   | "capability"
   | "solution"
@@ -41,6 +43,12 @@ export type ProcessItem = DetailItem & {
   number: string;
 };
 
+export type InternalSectionCopy = {
+  title: string;
+  introduction: string;
+  ariaLabel: string;
+};
+
 export type ContentReference = {
   family: Exclude<PageFamily, "about">;
   slug: string;
@@ -65,6 +73,12 @@ type InternalPageContentBase = {
 
 export type CapabilityPageContent = InternalPageContentBase & {
   family: "capability";
+  visualKey: CapabilityVisualKey;
+  sections: {
+    enablement: InternalSectionCopy;
+    coreAreas: InternalSectionCopy;
+    application: InternalSectionCopy;
+  };
   enablement: readonly DetailItem[];
   coreAreas: readonly DetailItem[];
   application: readonly ProcessItem[];
@@ -143,6 +157,8 @@ export type IndexItem = {
   description: string;
   href: string;
   tags?: readonly string[];
+  visualKey?: string;
+  actionLabel?: string;
 };
 
 export type InternalIndexContent = {

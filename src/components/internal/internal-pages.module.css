@@ -459,6 +459,10 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.threeColumnDetailGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .compactDetailGrid > li {
   min-height: 14rem;
   padding: 1.75rem;
@@ -706,7 +710,7 @@
 
 .indexList a {
   display: grid;
-  grid-template-columns: 3rem minmax(0, 1fr) 1.5rem;
+  grid-template-columns: 3rem minmax(0, 1fr) minmax(13rem, 0.64fr) auto;
   gap: clamp(1.25rem, 3vw, 3rem);
   align-items: start;
   padding: clamp(1.6rem, 3vw, 2.5rem) 0.75rem;
@@ -753,9 +757,31 @@
 }
 
 .indexArrow {
-  width: 1.1rem;
-  margin-top: 0.4rem;
+  width: 0.95rem;
   color: rgba(var(--family-accent), 0.72);
+}
+
+.indexVisual {
+  align-self: center;
+  opacity: 0.82;
+}
+
+.indexAction {
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
+  gap: 0.65rem;
+  color: var(--text-muted);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: var(--text-tech-secondary);
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.indexList a:hover .indexAction,
+.indexList a:focus-visible .indexAction {
+  color: var(--text-secondary);
 }
 
 @keyframes internalDataFlow {
@@ -799,6 +825,15 @@
   .processRail {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 3rem 1rem;
+  }
+
+  .indexList a {
+    grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+  }
+
+  .indexVisual {
+    grid-column: 2 / -1;
+    width: min(100%, 26rem);
   }
 }
 
@@ -953,7 +988,7 @@
   }
 
   .indexList a {
-    grid-template-columns: 2rem minmax(0, 1fr) 1rem;
+    grid-template-columns: 2rem minmax(0, 1fr);
     gap: 0.75rem;
     padding-right: 0.35rem;
     padding-left: 0.35rem;
@@ -962,6 +997,15 @@
   .indexCopy {
     grid-template-columns: 1fr;
     gap: 0.75rem;
+  }
+
+  .indexVisual {
+    grid-column: 2;
+  }
+
+  .indexAction {
+    grid-column: 2;
+    justify-self: start;
   }
 
   .indexTags {

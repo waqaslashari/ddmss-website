@@ -1,0 +1,350 @@
+.diagram {
+  position: relative;
+  margin: 0;
+  padding: 1rem 0 0.9rem;
+  border-top: 1px solid rgba(39, 215, 255, 0.24);
+  border-bottom: 1px solid rgba(166, 179, 191, 0.08);
+  color: var(--cyan);
+}
+
+.diagram::after {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 5rem;
+  height: 1px;
+  background: currentColor;
+  content: "";
+  opacity: 0.7;
+}
+
+.diagram[data-diagram="software-system"] { color: var(--blue); }
+.diagram[data-diagram="connected-system"] { color: var(--status-green); }
+
+.diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.gridLine,
+.referenceLine,
+.activeFlow,
+.secondaryFlow,
+.node rect,
+.nodeActive rect,
+.assetSymbol path,
+.sensorNode,
+.indexLine,
+.indexNode rect,
+.indexNodeActive rect {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.gridLine {
+  stroke: rgba(112, 129, 142, 0.12);
+  stroke-width: 1;
+}
+
+.referenceLine {
+  stroke: rgba(112, 129, 142, 0.35);
+  stroke-width: 1;
+}
+
+.referenceText,
+.node text,
+.nodeActive text,
+.calloutText,
+.calloutMeta,
+.outputText,
+.indexDiagram text {
+  font-family: var(--font-jetbrains-mono), monospace;
+  letter-spacing: 0.055em;
+}
+
+.referenceText {
+  fill: var(--text-subtle);
+  font-size: 7px;
+}
+
+.activeFlow {
+  fill: none;
+  stroke: url(#intelligence-system-flow);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 8;
+  animation: systemFlow 8s linear infinite;
+  vector-effect: non-scaling-stroke;
+}
+
+.diagram[data-diagram="software-system"] .activeFlow { stroke: url(#software-system-flow); }
+.diagram[data-diagram="connected-system"] .activeFlow { stroke: url(#connected-system-flow); }
+
+.secondaryFlow {
+  stroke: rgba(112, 129, 142, 0.34);
+  stroke-width: 1;
+  stroke-dasharray: 3 7;
+}
+
+.arrowHead {
+  fill: currentColor;
+  opacity: 0.72;
+}
+
+.node rect,
+.nodeActive rect {
+  fill: rgba(4, 10, 16, 0.88);
+  stroke: rgba(112, 129, 142, 0.64);
+  stroke-width: 1;
+}
+
+.node circle,
+.nodeActive circle {
+  fill: currentColor;
+  opacity: 0.72;
+}
+
+.node text,
+.nodeActive text {
+  fill: var(--text-secondary);
+  font-size: 8px;
+}
+
+.node .nodeMeta,
+.nodeActive .nodeMeta {
+  fill: var(--text-subtle);
+  font-size: 6.5px;
+}
+
+.nodeActive rect {
+  fill: color-mix(in srgb, currentColor 7%, var(--bg-deep));
+  stroke: currentColor;
+  stroke-opacity: 0.76;
+}
+
+.nodeActive text:first-of-type {
+  fill: var(--text-primary);
+}
+
+.calloutText,
+.outputText {
+  fill: var(--text-muted);
+  font-size: 7.5px;
+}
+
+.calloutMeta {
+  fill: var(--text-subtle);
+  font-size: 6.5px;
+}
+
+.outputText {
+  fill: currentColor;
+  text-anchor: middle;
+}
+
+.assetSymbol path {
+  stroke: rgba(166, 179, 191, 0.66);
+  stroke-width: 1.2;
+}
+
+.sensorNode {
+  stroke: currentColor;
+  stroke-width: 1;
+  opacity: 0.7;
+}
+
+.sensorCore {
+  fill: currentColor;
+}
+
+.twinDiagram {
+  color: var(--violet);
+}
+
+.twinStage {
+  display: grid;
+  min-height: 25rem;
+  grid-template-columns: minmax(0, 1fr) 5.5rem minmax(0, 1fr);
+  align-items: center;
+  background-image:
+    linear-gradient(rgba(112, 129, 142, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(112, 129, 142, 0.035) 1px, transparent 1px);
+  background-size: 3rem 3rem;
+}
+
+.twinAsset {
+  min-width: 0;
+  text-align: center;
+}
+
+.twinAsset p,
+.twinAsset span,
+.twinConnection,
+.twinOutcome,
+.twinDiagram figcaption {
+  font-family: var(--font-jetbrains-mono), monospace;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.twinAsset p {
+  color: var(--text-secondary);
+  font-size: var(--text-tech-primary);
+}
+
+.twinAsset span {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--text-subtle);
+  font-size: var(--text-tech-micro);
+}
+
+.twinAsset img {
+  width: 100%;
+  height: auto;
+  margin-top: 0.75rem;
+  opacity: 0.88;
+  filter: saturate(0.84) brightness(0.94);
+}
+
+.twinAsset:last-child img {
+  opacity: 0.93;
+  filter: saturate(0.9) brightness(0.98);
+}
+
+.twinConnection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--text-muted);
+  font-size: 0.55rem;
+  text-align: center;
+}
+
+.twinConnection i {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(39, 215, 255, 0.22), rgba(57, 123, 255, 0.78), rgba(155, 108, 255, 0.34));
+}
+
+.twinConnection i::after {
+  position: absolute;
+  top: -3px;
+  right: 0;
+  width: 7px;
+  height: 7px;
+  border-top: 1px solid var(--violet);
+  border-right: 1px solid var(--violet);
+  content: "";
+  transform: rotate(45deg);
+}
+
+.twinConnection b {
+  color: var(--violet);
+  font-size: 0.58rem;
+  font-weight: 500;
+}
+
+.twinOutcome {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.45rem 0.7rem;
+  padding: 1rem;
+  border-top: 1px solid rgba(166, 179, 191, 0.08);
+  color: var(--text-muted);
+  font-size: var(--text-tech-micro);
+}
+
+.twinOutcome i {
+  color: rgba(155, 108, 255, 0.7);
+  font-style: normal;
+}
+
+.twinDiagram figcaption {
+  padding: 0.85rem 0.75rem 0;
+  border-top: 1px solid rgba(166, 179, 191, 0.08);
+  color: var(--text-subtle);
+  font-size: var(--text-tech-micro);
+}
+
+.indexDiagram {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.indexLine {
+  stroke: rgba(112, 129, 142, 0.34);
+  stroke-width: 1;
+}
+
+.indexNode rect,
+.indexNodeActive rect {
+  fill: var(--bg-deep);
+  stroke: rgba(112, 129, 142, 0.72);
+  stroke-width: 1;
+}
+
+.indexNodeActive rect {
+  fill: rgba(39, 215, 255, 0.14);
+  stroke: rgba(39, 215, 255, 0.9);
+}
+
+.indexDiagram text {
+  fill: var(--text-muted);
+  font-size: 7px;
+  text-anchor: middle;
+}
+
+@keyframes systemFlow {
+  to { stroke-dashoffset: -65; }
+}
+
+@media (max-width: 47.999rem) {
+  .diagram {
+    margin-inline: -0.25rem;
+  }
+
+  .twinStage {
+    min-height: 0;
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+    padding: 1.2rem 0;
+  }
+
+  .twinAsset {
+    width: min(100%, 22rem);
+    margin-inline: auto;
+  }
+
+  .twinAsset img {
+    max-height: 12rem;
+    object-fit: contain;
+  }
+
+  .twinConnection {
+    width: 6.5rem;
+    margin-inline: auto;
+  }
+
+  .twinConnection i {
+    width: 1px;
+    height: 2.2rem;
+    background: linear-gradient(180deg, rgba(39, 215, 255, 0.22), rgba(57, 123, 255, 0.78), rgba(155, 108, 255, 0.34));
+  }
+
+  .twinConnection i::after {
+    top: auto;
+    right: -3px;
+    bottom: 0;
+    transform: rotate(135deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .activeFlow { animation: none; }
+}
