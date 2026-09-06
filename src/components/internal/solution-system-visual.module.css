@@ -77,6 +77,48 @@
   letter-spacing: 0.07em;
 }
 
+.aiHeroNodes rect {
+  fill: rgba(4, 10, 16, 0.82);
+  stroke: rgba(112, 129, 142, 0.56);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.aiHeroNodes text {
+  fill: var(--text-muted);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 8px;
+  letter-spacing: 0.055em;
+  text-anchor: middle;
+}
+
+.aiHeroNodes .aiCoreNode {
+  fill: rgba(var(--family-accent), 0.075);
+  stroke: rgba(155, 108, 255, 0.68);
+  stroke-width: 1.2;
+}
+
+.aiHeroNodes .aiCoreTitle {
+  fill: var(--text-secondary);
+  font-size: 10px;
+}
+
+.aiHeroNodes .aiCoreMeta {
+  fill: var(--text-subtle);
+  font-size: 7px;
+}
+
+.aiPoweredEnterpriseHero .heroCanvas {
+  background:
+    radial-gradient(circle at 51% 50%, rgba(155, 108, 255, 0.055), transparent 31%),
+    radial-gradient(circle at 52% 50%, rgba(var(--family-accent), 0.065), transparent 48%),
+    linear-gradient(180deg, rgba(7, 16, 25, 0.08), rgba(4, 10, 16, 0.34));
+}
+
+.aiPoweredEnterpriseHero .secondaryPath {
+  stroke: rgba(155, 108, 255, 0.3);
+}
+
 .heroImage,
 .assetFrame {
   position: absolute;

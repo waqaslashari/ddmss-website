@@ -1,6 +1,7 @@
 import type { SolutionSummary, SolutionVisualKey } from "@/types/content";
+import { featuredSolutionSummaries } from "@/content/solutions";
 
-export { solutionSummaries as solutions } from "@/content/solutions";
+export type SolutionKey = Exclude<SolutionVisualKey, "aiPoweredEnterprise">;
+export type Solution = Omit<SolutionSummary, "key"> & { key: SolutionKey };
 
-export type SolutionKey = SolutionVisualKey;
-export type Solution = SolutionSummary;
+export const solutions = featuredSolutionSummaries as readonly Solution[];

@@ -16,6 +16,7 @@ export default function SolutionsIndexPage() {
         digitalTwins: <SolutionIndexVisual solution="digitalTwins" />,
         intelligentOperations: <SolutionIndexVisual solution="intelligentOperations" />,
         smartFacilities: <SolutionIndexVisual solution="smartFacilities" />,
+        aiPoweredEnterprise: <SolutionIndexVisual solution="aiPoweredEnterprise" />,
       }}
     />
   );

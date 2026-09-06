@@ -21,7 +21,8 @@ export type SolutionVisualKey =
   | "evCharging"
   | "digitalTwins"
   | "intelligentOperations"
-  | "smartFacilities";
+  | "smartFacilities"
+  | "aiPoweredEnterprise";
 
 export type SolutionSummary = {
   key: SolutionVisualKey;

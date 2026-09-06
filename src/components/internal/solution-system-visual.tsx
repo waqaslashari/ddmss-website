@@ -9,6 +9,7 @@ const visualNames: Record<SolutionVisualKey, string> = {
   digitalTwins: "Digital Twins",
   intelligentOperations: "Intelligent Operations",
   smartFacilities: "Smart Facilities",
+  aiPoweredEnterprise: "AI-Powered Enterprise",
 };
 
 function HeroNetwork({ children }: { children: ReactNode }) {
@@ -87,12 +88,41 @@ function SmartFacilitiesHero() {
   );
 }
 
+function AiPoweredEnterpriseHero() {
+  return (
+    <HeroNetwork>
+      <path className={styles.activePath} d="M132 92h96l94 124M132 160h108l82 56M132 270h108l82-54M132 338h96l94-122h126l88-92h104M448 216l88 92h104" />
+      <path className={styles.secondaryPath} d="M448 216h192M536 124v184M378 154V82h116M378 278v70h116" />
+      <g className={styles.aiHeroNodes}>
+        <rect x="54" y="70" width="78" height="44" rx="3" /><text x="93" y="97">KNOWLEDGE</text>
+        <rect x="54" y="138" width="78" height="44" rx="3" /><text x="93" y="165">DOCUMENTS</text>
+        <rect x="54" y="248" width="78" height="44" rx="3" /><text x="93" y="275">DATA</text>
+        <rect x="54" y="316" width="78" height="44" rx="3" /><text x="93" y="343">APPLICATIONS</text>
+        <rect className={styles.aiCoreNode} x="322" y="154" width="126" height="124" rx="4" />
+        <text className={styles.aiCoreTitle} x="385" y="205">GOVERNED AI</text>
+        <text className={styles.aiCoreMeta} x="385" y="226">CONTEXT / ACCESS</text>
+        <text className={styles.aiCoreMeta} x="385" y="242">POLICY / TRACE</text>
+        <rect x="536" y="102" width="104" height="44" rx="3" /><text x="588" y="129">ASSISTANTS</text>
+        <rect x="536" y="194" width="104" height="44" rx="3" /><text x="588" y="221">AGENTS</text>
+        <rect x="536" y="286" width="104" height="44" rx="3" /><text x="588" y="313">ANALYTICS</text>
+      </g>
+      <g className={styles.heroLabels}>
+        <text x="318" y="72">ENTERPRISE CONTEXT</text>
+        <text x="535" y="86">INTELLIGENCE LAYER</text>
+        <text x="536" y="354">HUMAN OVERSIGHT / ACTIVE</text>
+        <text x="650" y="219">CONTROLLED ACTION</text>
+      </g>
+    </HeroNetwork>
+  );
+}
+
 const heroVisuals: Record<SolutionVisualKey, ReactNode> = {
   smartParking: <SmartParkingHero />,
   evCharging: <EvChargingHero />,
   digitalTwins: <DigitalTwinsHero />,
   intelligentOperations: <IntelligentOperationsHero />,
   smartFacilities: <SmartFacilitiesHero />,
+  aiPoweredEnterprise: <AiPoweredEnterpriseHero />,
 };
 
 export function SolutionHeroVisual({ solution }: { solution: SolutionVisualKey }) {
@@ -154,12 +184,17 @@ function SmartFacilitiesArchitecture() {
   return <ArchitectureBase label="Building access, parking, EV charging, energy and asset systems converge into a facility platform and operational data layer."><path className={styles.architecturePath} d="M132 52l170 112M132 104l170 60M132 164h170M132 224l170-60M132 276l170-112h40M484 164h46M672 164h32" /><SystemNode x={12} y={26} width={120} label="ACCESS" /><SystemNode x={12} y={78} width={120} label="PARKING" /><SystemNode x={12} y={138} width={120} label="EV CHARGING" /><SystemNode x={12} y={198} width={120} label="ENERGY" /><SystemNode x={12} y={250} width={120} label="ASSETS" /><SystemNode x={302} y={133} width={182} label="FACILITY" sub="PLATFORM" active /><SystemNode x={530} y={133} width={142} label="DATA" sub="ANALYTICS" /><SystemNode x={704} y={138} width={104} label="OPERATIONS" active /></ArchitectureBase>;
 }
 
+function AiPoweredEnterpriseArchitecture() {
+  return <ArchitectureBase label="Trusted enterprise context passes through governance into an AI platform, assistants and agents, human review and controlled action."><path className={styles.architecturePath} d="M128 162h24M278 162h24M438 162h24M594 162h24M738 162h16" /><SystemNode x={12} y={131} width={116} label="TRUSTED" sub="CONTEXT" /><SystemNode x={152} y={131} width={126} label="GOVERNANCE" sub="ACCESS / POLICY" active /><SystemNode x={302} y={131} width={136} label="AI PLATFORM" sub="MODELS / CONTEXT" active /><SystemNode x={462} y={131} width={132} label="ASSIST / AGENT" sub="ANALYTICS" /><SystemNode x={618} y={131} width={120} label="HUMAN" sub="REVIEW" active /><SystemNode x={754} y={136} width={54} label="ACTION" /><text className={styles.architectureMeta} x="410" y="102">KNOWLEDGE + DOCUMENTS + DATA + APPLICATIONS</text><text className={styles.architectureMeta} x="678" y="222">APPROVED WORKFLOW / CONTROLLED ACTION</text></ArchitectureBase>;
+}
+
 const architectureVisuals: Record<SolutionVisualKey, ReactNode> = {
   smartParking: <SmartParkingArchitecture />,
   evCharging: <EvChargingArchitecture />,
   digitalTwins: <DigitalTwinsArchitecture />,
   intelligentOperations: <IntelligentOperationsArchitecture />,
   smartFacilities: <SmartFacilitiesArchitecture />,
+  aiPoweredEnterprise: <AiPoweredEnterpriseArchitecture />,
 };
 
 const mobileArchitectureVisuals: Record<SolutionVisualKey, ReactNode> = {
@@ -168,6 +203,7 @@ const mobileArchitectureVisuals: Record<SolutionVisualKey, ReactNode> = {
   digitalTwins: <MobileArchitectureBase label="A physical asset connects through sensors and systems to data integration, a synchronized digital twin, analytics and intelligence or action."><path className={styles.architecturePath} d="M180 70v18M180 150v18M180 230v18M180 310v18M180 390v18" /><SystemNode x={110} y={8} width={140} label="PHYSICAL" sub="ASSET" /><SystemNode x={110} y={88} width={140} label="SENSORS" sub="SYSTEMS" /><SystemNode x={110} y={168} width={140} label="DATA" sub="INTEGRATION" /><SystemNode x={110} y={248} width={140} label="DIGITAL TWIN" active /><SystemNode x={110} y={328} width={140} label="ANALYTICS" /><SystemNode x={110} y={408} width={140} label="INTELLIGENCE" sub="ACTION" active /></MobileArchitectureBase>,
   intelligentOperations: <MobileArchitectureBase label="Systems, devices and data converge into an operational platform, followed by analytics, governed AI or rules, decision and action."><path className={styles.architecturePath} d="M62 70l118 58M180 70v58M298 70l-118 58v34M180 224v24M180 310v24M180 396v20" /><SystemNode x={12} y={18} width={100} label="SYSTEMS" /><SystemNode x={130} y={18} width={100} label="DEVICES" /><SystemNode x={248} y={18} width={100} label="DATA" /><SystemNode x={110} y={162} width={140} label="OPERATIONAL" sub="PLATFORM" active /><SystemNode x={120} y={248} width={120} label="ANALYTICS" /><SystemNode x={110} y={334} width={140} label="AI / RULES" sub="GOVERNED" active /><SystemNode x={12} y={416} width={142} label="DECISION" /><SystemNode x={206} y={416} width={142} label="ACTION" /></MobileArchitectureBase>,
   smartFacilities: <MobileArchitectureBase label="Building access, parking, EV charging, energy and asset systems converge into a facility platform and operational data layer."><path className={styles.architecturePath} d="M55 70l125 72M180 70v72M305 70l-125 72M110 130l70 12M250 130l-70 12v54M180 258v34M180 354v34" /><SystemNode x={8} y={18} width={94} label="ACCESS" /><SystemNode x={133} y={18} width={94} label="PARKING" /><SystemNode x={258} y={18} width={94} label="EV CHARGE" /><SystemNode x={62} y={96} width={96} label="ENERGY" /><SystemNode x={202} y={96} width={96} label="ASSETS" /><SystemNode x={100} y={196} width={160} label="FACILITY" sub="PLATFORM" active /><SystemNode x={110} y={292} width={140} label="DATA" sub="ANALYTICS" /><SystemNode x={110} y={388} width={140} label="OPERATIONS" active /></MobileArchitectureBase>,
+  aiPoweredEnterprise: <MobileArchitectureBase label="Trusted enterprise context passes through governance into an AI platform, assistants and agents, human review and controlled action."><path className={styles.architecturePath} d="M180 70v18M180 150v18M180 230v18M180 310v18M180 390v18" /><SystemNode x={110} y={8} width={140} label="TRUSTED" sub="CONTEXT" /><SystemNode x={110} y={88} width={140} label="GOVERNANCE" sub="ACCESS / POLICY" active /><SystemNode x={110} y={168} width={140} label="AI PLATFORM" sub="MODELS / CONTEXT" active /><SystemNode x={110} y={248} width={140} label="ASSIST / AGENT" sub="ANALYTICS" /><SystemNode x={110} y={328} width={140} label="HUMAN" sub="REVIEW" active /><SystemNode x={110} y={408} width={140} label="CONTROLLED" sub="ACTION" /></MobileArchitectureBase>,
 };
 
 export function SolutionArchitectureVisual({ solution }: { solution: SolutionVisualKey }) {
@@ -186,6 +222,7 @@ const indexPaths: Record<SolutionVisualKey, ReactNode> = {
   digitalTwins: <><rect x="18" y="20" width="62" height="36" /><path d="M80 38h76" /><rect x="156" y="14" width="68" height="48" /><path d="M100 32v12m18-12v12m18-12v12" /></>,
   intelligentOperations: <><path d="M18 14l58 24M18 38h58M18 62l58-24h66l82-24M142 38l82 24" /><rect x="76" y="24" width="66" height="28" /><circle cx="224" cy="14" r="4" /><circle cx="224" cy="62" r="4" /></>,
   smartFacilities: <><path d="M18 12l76 26M18 28l76 10M18 48l76-10M18 64l76-26h56l74 0" /><rect x="94" y="24" width="56" height="28" /><circle cx="224" cy="38" r="4" /></>,
+  aiPoweredEnterprise: <><path d="M16 14l64 24M16 38h64M16 62l64-24h60M140 38h34M208 38h16" /><rect x="80" y="22" width="60" height="32" /><rect x="174" y="24" width="34" height="28" /><circle cx="16" cy="14" r="3" /><circle cx="16" cy="38" r="3" /><circle cx="16" cy="62" r="3" /><circle cx="224" cy="38" r="4" /></>,
 };
 
 export function SolutionIndexVisual({ solution }: { solution: SolutionVisualKey }) {

@@ -61,14 +61,29 @@ export const solutionSummaries: readonly SolutionSummary[] = [
     tags: ["Buildings", "Access", "Energy", "Operations"],
     href: "/solutions/smart-facilities",
   },
+  {
+    key: "aiPoweredEnterprise",
+    number: "06",
+    slug: "ai-powered-enterprise",
+    title: "AI-Powered Enterprise",
+    description:
+      "Governed AI assistants, agents, document intelligence and workflow automation grounded in enterprise knowledge and data.",
+    architectureLine: "TRUSTED CONTEXT → GOVERNED AI → CONTROLLED ACTION",
+    tags: ["Knowledge", "Assistants", "Agents", "Governance"],
+    href: "/solutions/ai-powered-enterprise",
+  },
 ] as const;
+
+export const featuredSolutionSummaries = solutionSummaries.filter(
+  (solution) => solution.key !== "aiPoweredEnterprise",
+);
 
 export const solutionsIndexContent: InternalIndexContent = {
   family: "solution",
   seo: {
     title: "Digital & Connected Solutions",
     description:
-      "Explore DDMSS smart parking, EV charging, digital twin, intelligent operations and smart facility solutions.",
+      "Explore DDMSS smart parking, EV charging, digital twin, intelligent operations, smart facility and AI-powered enterprise solutions.",
   },
   hero: {
     marker: "SOLUTIONS / 00",
@@ -98,6 +113,12 @@ export const solutionsIndexContent: InternalIndexContent = {
 };
 
 const capabilities = {
+  transformation: {
+    family: "capability",
+    slug: "digital-transformation-governance",
+    title: "Digital Transformation & Governance",
+    description: "Enterprise direction, operating models and practical transformation roadmaps.",
+  },
   software: {
     family: "capability",
     slug: "software-digital-products",
@@ -511,12 +532,82 @@ const smartFacilities: SolutionPageContent = {
   finalCta: sharedCta,
 };
 
+const aiPoweredEnterprise: SolutionPageContent = {
+  family: "solution",
+  slug: "ai-powered-enterprise",
+  visualKey: "aiPoweredEnterprise",
+  seo: {
+    title: "AI-Powered Enterprise Solutions",
+    description:
+      "Explore governed enterprise AI solutions from DDMSS, connecting trusted knowledge and data to assistants, agents, document intelligence and controlled workflows.",
+  },
+  hero: {
+    marker: "SOLUTION / 06",
+    title: "AI-Powered Enterprise",
+    introduction:
+      "Embed governed AI into enterprise knowledge, decisions and workflows while keeping human oversight visible at every critical step.",
+    technicalLine: "KNOWLEDGE · DATA · GOVERNANCE · AI · WORKFLOW · OVERSIGHT",
+    tags: ["Enterprise Knowledge", "AI Assistants", "AI Agents", "Governance"],
+    breadcrumbs: [
+      { label: "Home", href: "/" },
+      { label: "Solutions", href: "/solutions" },
+      { label: "AI-Powered Enterprise" },
+    ],
+    action: { label: "Discuss This Solution", href: "/contact" },
+  },
+  challenge:
+    "Enterprise AI creates operational value only when it works with trusted business context, defined access controls and accountable workflows. Without that foundation, isolated experiments struggle to move safely into day-to-day decisions and execution.",
+  challengeSystems: [
+    "Enterprise knowledge",
+    "Documents and records",
+    "Operational data",
+    "Business applications",
+    "Access and permissions",
+    "Decision workflows",
+    "Human review",
+    "Governance controls",
+  ],
+  architecture:
+    "Knowledge, documents, operational data and business applications connect through governed access and context layers. AI assistants, agents and analytics then support recommendations and bounded automation, with human review before consequential action.",
+  coreComponents: [
+    { title: "Enterprise Knowledge", description: "Structured business context that grounds AI outputs in approved organizational information." },
+    { title: "AI Assistants", description: "Role-aware interfaces that help people find, interpret and apply relevant information." },
+    { title: "AI Agents", description: "Task-oriented intelligence operating within explicit permissions, tools and approval boundaries." },
+    { title: "Document Intelligence", description: "Extraction, classification and interpretation for documents, records and content-intensive processes." },
+    { title: "Data Intelligence", description: "Analysis and decision support connected to governed enterprise and operational data." },
+    { title: "Workflow Automation", description: "AI-supported steps integrated into accountable business processes and system actions." },
+    { title: "Governance & Controls", description: "Access, traceability, policy, evaluation and human oversight designed into the solution." },
+  ],
+  operatingFlow: [
+    { number: "01", title: "Establish context", description: "Connect approved knowledge, documents, data and application sources." },
+    { number: "02", title: "Apply governance", description: "Define access, policy, traceability and operational boundaries." },
+    { number: "03", title: "Generate intelligence", description: "Assistants, agents and models interpret context and produce useful outputs." },
+    { number: "04", title: "Review", description: "People validate recommendations and retain oversight of consequential decisions." },
+    { number: "05", title: "Act", description: "Approved outputs move into workflows, systems and bounded automation." },
+  ],
+  benefits: [
+    { title: "Faster knowledge access", description: "Make relevant enterprise context easier for teams to find and apply." },
+    { title: "Better decision support", description: "Connect recommendations to current data, business context and accountable review." },
+    { title: "Reduced manual effort", description: "Automate repeatable document, analysis and workflow steps within clear boundaries." },
+    { title: "Consistent execution", description: "Embed approved knowledge and process logic into day-to-day work." },
+    { title: "Visible governance", description: "Keep access, controls, traceability and human oversight part of the operating model." },
+    { title: "Controlled automation", description: "Move from recommendations to action only through approved system and workflow paths." },
+    { title: "Reusable intelligence", description: "Build shared AI capabilities that can support multiple functions and use cases." },
+    { title: "Practical adoption", description: "Focus implementation on real enterprise workflows rather than disconnected experiments." },
+  ],
+  relatedCapabilities: [capabilities.intelligence, capabilities.software, capabilities.transformation],
+  relatedIndustries: [industries.government, industries.energy, industries.manufacturing, industries.logistics],
+  relatedWork: [],
+  finalCta: sharedCta,
+};
+
 export const solutionPages: readonly SolutionPageContent[] = [
   smartParking,
   evCharging,
   digitalTwins,
   intelligentOperations,
   smartFacilities,
+  aiPoweredEnterprise,
 ];
 
 export function getSolutionPage(slug: string) {
