@@ -1,11 +1,19 @@
-export type Capability = {
+export type CapabilityVisualKey =
+  | "transformation"
+  | "intelligence"
+  | "software"
+  | "connected"
+  | "digitalTwin";
+
+export type CapabilitySummary = {
+  key: CapabilityVisualKey;
   slug: string;
   number: string;
+  label: string;
   title: string;
   shortDescription: string;
-  description: string;
-  visual: string;
-  highlights: string[];
+  tags: readonly string[];
+  flagship?: boolean;
 };
 
 export type Solution = {

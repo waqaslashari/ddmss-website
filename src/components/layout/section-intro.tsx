@@ -7,6 +7,7 @@ type SectionIntroProps = {
   description?: ReactNode;
   align?: "left" | "center";
   className?: string;
+  headingId?: string;
 };
 
 export function SectionIntro({
@@ -15,6 +16,7 @@ export function SectionIntro({
   description,
   align = "left",
   className = "",
+  headingId,
 }: SectionIntroProps) {
   const alignment =
     align === "center" ? "mx-auto items-center text-center" : "items-start";
@@ -22,7 +24,10 @@ export function SectionIntro({
   return (
     <header className={`flex max-w-4xl flex-col ${alignment} ${className}`}>
       {eyebrow ? <TechnicalLabel className="mb-5">{eyebrow}</TechnicalLabel> : null}
-      <h2 className="text-[clamp(2rem,5vw,4rem)] leading-[1.05] font-semibold tracking-[-0.045em] text-balance">
+      <h2
+        id={headingId}
+        className="text-[clamp(2rem,5vw,4rem)] leading-[1.05] font-semibold tracking-[-0.045em] text-balance"
+      >
         {title}
       </h2>
       {description ? (

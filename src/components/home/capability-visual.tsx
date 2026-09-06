@@ -1,16 +1,10 @@
 import Image from "next/image";
 
+import type { CapabilityVisualKey } from "@/types/content";
 import styles from "./capabilities-section.module.css";
 
-export type CapabilityKey =
-  | "transformation"
-  | "intelligence"
-  | "software"
-  | "connected"
-  | "digitalTwin";
-
 type CapabilityVisualProps = {
-  capability: CapabilityKey;
+  capability: CapabilityVisualKey;
 };
 
 const Node = ({ cx, cy, active = false }: { cx: number; cy: number; active?: boolean }) => (
