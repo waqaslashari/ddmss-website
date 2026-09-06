@@ -2,6 +2,7 @@ import type {
   CapabilityVisualKey,
   IndustryVisualKey,
   SolutionVisualKey,
+  WorkVisualKey,
 } from "@/types/content";
 
 export type PageFamily =
@@ -118,14 +119,24 @@ export type IndustryPageContent = InternalPageContentBase & {
 
 export type WorkPageContent = InternalPageContentBase & {
   family: "work";
-  status: "concept" | "prototype" | "delivered";
+  visualKey: WorkVisualKey;
+  client?: string;
+  status?: "concept" | "prototype" | "delivered";
   context: string;
   challenge: string;
+  challengeAreas: readonly DetailItem[];
   architecture: string;
   components: readonly DetailItem[];
   approach: readonly ProcessItem[];
-  outcomes?: readonly DetailItem[];
-  relatedWork: readonly ContentReference[];
+  evidence?: {
+    marker: string;
+    title: string;
+    introduction?: string;
+    items: readonly DetailItem[];
+  };
+  relatedCapabilities: readonly ContentReference[];
+  relatedSolutions: readonly ContentReference[];
+  relevantIndustries: readonly ContentReference[];
 };
 
 export type ArticleSection = {

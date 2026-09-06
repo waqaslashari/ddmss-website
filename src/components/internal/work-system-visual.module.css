@@ -1,0 +1,310 @@
+.heroFigure,
+.architectureFigure {
+  position: relative;
+  margin: 0;
+  border-top: 1px solid rgba(var(--family-accent), 0.26);
+  border-bottom: 1px solid rgba(166, 179, 191, 0.09);
+}
+
+.heroFigure::before,
+.architectureFigure::before {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  z-index: 5;
+  width: 5rem;
+  height: 1px;
+  background: rgb(var(--family-accent));
+  content: "";
+  opacity: 0.74;
+}
+
+.heroCanvas {
+  position: relative;
+  aspect-ratio: 760 / 430;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 51%, rgba(var(--family-accent), 0.065), transparent 43%),
+    linear-gradient(180deg, rgba(7, 16, 25, 0.08), rgba(4, 10, 16, 0.36));
+}
+
+.heroNetwork {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.reference,
+.activePath,
+.secondaryPath,
+.grid,
+.architecturePath,
+.indexSvg path,
+.indexSvg rect,
+.indexSvg circle {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.reference {
+  stroke: rgba(112, 129, 142, 0.14);
+  stroke-dasharray: 2 8;
+  stroke-width: 1;
+}
+
+.activePath,
+.architecturePath {
+  stroke: rgba(var(--family-accent), 0.64);
+  stroke-dasharray: 5 8;
+  stroke-width: 1.3;
+  animation: workDataFlow 8s linear infinite;
+}
+
+.secondaryPath {
+  stroke: rgba(166, 179, 191, 0.27);
+  stroke-dasharray: 2 7;
+  stroke-width: 1;
+}
+
+.heroLabels text,
+.assetFrame span {
+  fill: color-mix(in srgb, var(--text-muted) 84%, var(--text-secondary));
+  color: color-mix(in srgb, var(--text-muted) 84%, var(--text-secondary));
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 9px;
+  letter-spacing: 0.07em;
+}
+
+.heroImage,
+.assetFrame {
+  position: absolute;
+  z-index: 1;
+}
+
+.heroImage {
+  object-fit: contain;
+  filter: brightness(0.8) saturate(0.84) drop-shadow(0 0 14px rgba(var(--family-accent), 0.08));
+}
+
+.parkingImage {
+  inset: 7% 3% 0 7%;
+  width: 90%;
+  height: 92%;
+  opacity: 0.78;
+}
+
+.chargerImage {
+  top: 13%;
+  left: 38%;
+  width: 17%;
+  height: 64%;
+}
+
+.evImage {
+  right: 4%;
+  bottom: 1%;
+  width: 45%;
+  height: 45%;
+  opacity: 0.58;
+}
+
+.assetFrame {
+  top: 15%;
+  width: 45%;
+  height: 69%;
+}
+
+.assetFrame span {
+  position: absolute;
+  top: 0;
+  left: 0.75rem;
+  z-index: 1;
+}
+
+.assetFrame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0.76) saturate(0.76);
+}
+
+.physicalFrame { left: 1%; }
+.twinFrame { right: 1%; }
+.twinFrame img { filter: brightness(0.83) saturate(0.86) drop-shadow(0 0 13px rgba(var(--family-accent), 0.08)); }
+
+.heroFigure figcaption,
+.architectureFigure figcaption {
+  position: relative;
+  z-index: 3;
+  border-top: 1px solid rgba(166, 179, 191, 0.08);
+  padding: 0.85rem 0.75rem;
+  color: var(--text-muted);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: var(--text-tech-secondary);
+  letter-spacing: 0.055em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.architectureFigure {
+  border-bottom: 0;
+}
+
+.architectureSvg {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 20rem;
+}
+
+.mobileArchitecture {
+  display: none;
+}
+
+.grid {
+  stroke: rgba(112, 129, 142, 0.1);
+  stroke-width: 1;
+}
+
+.systemNode rect {
+  fill: rgba(4, 10, 16, 0.88);
+  stroke: rgba(112, 129, 142, 0.64);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.systemNode text,
+.architectureMeta,
+.indexSvg text {
+  fill: var(--text-muted);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  text-anchor: middle;
+}
+
+.systemNode .nodeSub {
+  fill: var(--text-subtle);
+  font-size: 7px;
+}
+
+.activeNode rect {
+  fill: rgba(var(--family-accent), 0.07);
+  stroke: rgba(var(--family-accent), 0.76);
+}
+
+.activeNode text {
+  fill: var(--text-secondary);
+}
+
+.architectureMeta {
+  fill: rgba(var(--family-accent), 0.72);
+  font-size: 7px;
+}
+
+.indexSvg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.indexSvg path {
+  stroke: rgba(var(--family-accent), 0.56);
+  stroke-dasharray: 3 6;
+  stroke-width: 1.2;
+}
+
+.indexSvg rect {
+  fill: rgba(var(--family-accent), 0.04);
+  stroke: rgba(var(--family-accent), 0.52);
+  stroke-width: 1;
+}
+
+.indexSvg circle {
+  fill: rgba(var(--family-accent), 0.2);
+  stroke: rgba(var(--family-accent), 0.82);
+  stroke-width: 1;
+}
+
+.indexSvg text {
+  font-size: 8px;
+}
+
+@keyframes workDataFlow {
+  to { stroke-dashoffset: -65; }
+}
+
+@media (max-width: 69.999rem) {
+  .heroFigure {
+    max-width: 52rem;
+  }
+}
+
+@media (max-width: 47.999rem) {
+  .heroCanvas {
+    aspect-ratio: 4 / 3;
+  }
+
+  .heroLabels text {
+    font-size: 10px;
+  }
+
+  .parkingImage {
+    inset: 8% 0 0 1%;
+    width: 99%;
+  }
+
+  .chargerImage {
+    left: 33%;
+    width: 23%;
+  }
+
+  .evImage {
+    right: -1%;
+    width: 52%;
+  }
+
+  .assetFrame {
+    top: 18%;
+    height: 64%;
+  }
+
+  .architectureFigure {
+    margin-inline: -0.75rem;
+  }
+
+  .architectureSvg {
+    min-height: 0;
+  }
+
+  .desktopArchitecture {
+    display: none;
+  }
+
+  .mobileArchitecture {
+    display: block;
+  }
+
+  .heroFigure figcaption,
+  .architectureFigure figcaption {
+    font-size: var(--text-tech-micro);
+  }
+}
+
+@media (max-width: 22.5rem) {
+  .architectureFigure {
+    margin-inline: -1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .activePath,
+  .architecturePath {
+    animation: none;
+  }
+}

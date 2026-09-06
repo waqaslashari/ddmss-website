@@ -52,6 +52,11 @@ export type IndustryVisualKey =
   | "manufacturing"
   | "logistics";
 
+export type WorkVisualKey =
+  | "smartParking"
+  | "evCharging"
+  | "industrialOperations";
+
 export type Industry = {
   slug: string;
   title: string;

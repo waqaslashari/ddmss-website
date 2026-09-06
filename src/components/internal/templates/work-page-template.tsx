@@ -1,27 +1,67 @@
-import type { ReactNode } from "react";
 import type { WorkPageContent } from "@/types/internal-pages";
 import { DetailGrid, InternalPageSection, ProcessRail } from "../internal-page-section";
 import { InternalPageShell } from "../internal-page-shell";
 import { RelatedContent } from "../related-content";
+import {
+  WorkArchitectureVisual,
+  WorkHeroVisual,
+} from "../work-system-visual";
 import styles from "../internal-pages.module.css";
 
-export function WorkPageTemplate({ content, heroVisual, architectureVisual }: { content: WorkPageContent; heroVisual?: ReactNode; architectureVisual?: ReactNode }) {
-  const relatedContent = content.relatedWork.length ? (
+export function WorkPageTemplate({ content }: { content: WorkPageContent }) {
+  const relatedContent = (
     <div className={styles.relationshipFlow}>
-      <RelatedContent id="related-work" marker="RELATED / WORK" title="Related systems and engineering work." items={content.relatedWork} />
+      <RelatedContent
+        id="work-capabilities"
+        marker="07 / RELATED CAPABILITIES"
+        title="Engineering capabilities behind the system."
+        items={content.relatedCapabilities}
+      />
+      <RelatedContent
+        id="work-solutions"
+        marker="08 / RELATED SOLUTIONS"
+        title="Solutions connected to this system."
+        items={content.relatedSolutions}
+      />
+      <RelatedContent
+        id="work-industries"
+        marker="09 / RELEVANT INDUSTRIES"
+        title="Operating environments where this architecture is relevant."
+        items={content.relevantIndustries}
+      />
     </div>
-  ) : undefined;
+  );
 
   return (
-    <InternalPageShell family={content.family} hero={content.hero} heroVisual={heroVisual} relatedContent={relatedContent} finalCta={content.finalCta}>
-      <InternalPageSection id="project-context" marker="01 / CONTEXT" title="The operating context."><p className={styles.narrativeText}>{content.context}</p></InternalPageSection>
-      <InternalPageSection id="project-challenge" marker="02 / CHALLENGE" title="The system challenge." tone="quiet"><p className={styles.narrativeText}>{content.challenge}</p></InternalPageSection>
-      <InternalPageSection id="system-architecture" marker="03 / SYSTEM ARCHITECTURE" title="How the system is structured." introduction={content.architecture}>
-        {architectureVisual ? <div className={styles.visualStage}>{architectureVisual}</div> : null}
+    <InternalPageShell family={content.family} hero={content.hero} heroVisual={<WorkHeroVisual work={content.visualKey} />} relatedContent={relatedContent} finalCta={content.finalCta}>
+      <InternalPageSection id="project-context" marker="01 / CONTEXT" title="The operating context.">
+        <p className={styles.narrativeText}>{content.context}</p>
       </InternalPageSection>
-      <InternalPageSection id="project-components" marker="04 / COMPONENTS" title="Technology and system components." tone="quiet"><DetailGrid items={content.components} ariaLabel="Project components and technologies" /></InternalPageSection>
-      <InternalPageSection id="implementation-approach" marker="05 / IMPLEMENTATION" title="The implementation approach."><ProcessRail items={content.approach} ariaLabel="Implementation approach" /></InternalPageSection>
-      {content.outcomes?.length ? <InternalPageSection id="project-outcomes" marker="06 / OUTCOMES" title="Documented outcomes." tone="quiet"><DetailGrid items={content.outcomes} ariaLabel="Project outcomes" /></InternalPageSection> : null}
+      <InternalPageSection id="project-challenge" marker="02 / OPERATIONAL CHALLENGE" title="The system challenge." introduction={content.challenge} tone="quiet">
+        <DetailGrid items={content.challengeAreas} ariaLabel={`${content.hero.title} operational challenge areas`} columns={3} />
+      </InternalPageSection>
+      <InternalPageSection id="system-architecture" marker="03 / SYSTEM ARCHITECTURE" title="How the system is structured." introduction={content.architecture}>
+        <div className={styles.visualStage}>
+          <WorkArchitectureVisual work={content.visualKey} />
+        </div>
+      </InternalPageSection>
+      <InternalPageSection id="project-components" marker="04 / CORE COMPONENTS" title="Technology and system components." tone="quiet">
+        <DetailGrid items={content.components} ariaLabel={`${content.hero.title} components and technologies`} columns={3} />
+      </InternalPageSection>
+      <InternalPageSection id="implementation-approach" marker="05 / IMPLEMENTATION APPROACH" title="A delivery model shaped around the system.">
+        <ProcessRail items={content.approach} ariaLabel={`${content.hero.title} implementation approach`} columns={6} />
+      </InternalPageSection>
+      {content.evidence ? (
+        <InternalPageSection
+          id="system-evidence"
+          marker={content.evidence.marker}
+          title={content.evidence.title}
+          introduction={content.evidence.introduction}
+          tone="quiet"
+        >
+          <DetailGrid items={content.evidence.items} ariaLabel={`${content.hero.title} system capabilities`} />
+        </InternalPageSection>
+      ) : null}
     </InternalPageShell>
   );
 }
