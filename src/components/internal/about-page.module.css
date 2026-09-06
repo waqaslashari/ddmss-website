@@ -1,0 +1,400 @@
+.identityGrid {
+  display: grid;
+  grid-template-columns: minmax(15rem, 0.6fr) minmax(0, 1.4fr);
+  gap: clamp(3rem, 8vw, 8rem);
+  align-items: start;
+}
+
+.identityName {
+  display: grid;
+  gap: 0.9rem;
+  color: var(--text-muted);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: var(--text-tech-primary);
+  letter-spacing: 0.06em;
+  line-height: 1.7;
+  text-transform: uppercase;
+}
+
+.identityName span {
+  color: var(--text-primary);
+  font-family: var(--font-manrope), sans-serif;
+  font-size: clamp(2rem, 3.5vw, 3.25rem);
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  line-height: 1;
+}
+
+.leadNarrative {
+  max-width: 48rem;
+  color: var(--text-secondary);
+  font-size: clamp(1.08rem, 1.65vw, 1.35rem);
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+.domainRail,
+.exampleStrip {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  margin-top: clamp(3rem, 6vw, 5rem);
+  border-top: 1px solid rgba(166, 179, 191, 0.12);
+  border-left: 1px solid rgba(166, 179, 191, 0.08);
+  list-style: none;
+}
+
+.domainRail li,
+.exampleStrip li {
+  min-width: 0;
+  padding: 1rem 0.8rem;
+  border-right: 1px solid rgba(166, 179, 191, 0.08);
+  border-bottom: 1px solid rgba(166, 179, 191, 0.08);
+  color: var(--text-secondary);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: var(--text-tech-secondary);
+  letter-spacing: 0.045em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.domainRail span {
+  display: block;
+  margin-bottom: 1.25rem;
+  color: var(--text-subtle);
+  font-size: var(--text-tech-micro);
+}
+
+.modelRail {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  list-style: none;
+}
+
+.modelRail > li {
+  min-width: 0;
+  padding-right: clamp(1.25rem, 3vw, 3rem);
+}
+
+.modelHeader {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+}
+
+.modelHeader span,
+.modelRail > li > p,
+.aiPrinciples li > span,
+.aiPrinciples li p,
+.regionList li > span,
+.regionList li p,
+.workList > li > span,
+.workList small {
+  color: rgba(39, 215, 255, 0.72);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: var(--text-tech-secondary);
+  letter-spacing: 0.055em;
+  line-height: 1.55;
+  text-transform: uppercase;
+}
+
+.modelHeader i {
+  position: relative;
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, rgba(39, 215, 255, 0.48), rgba(57, 123, 255, 0.12));
+}
+
+.modelHeader i::after {
+  position: absolute;
+  top: -2px;
+  right: 0;
+  width: 5px;
+  height: 5px;
+  border: 1px solid rgba(39, 215, 255, 0.5);
+  background: var(--bg-primary);
+  content: "";
+  transform: rotate(45deg);
+}
+
+.modelRail > li > p {
+  margin-top: 2rem;
+}
+
+.modelRail h3 {
+  margin-top: 0.8rem;
+  color: var(--text-primary);
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 580;
+  letter-spacing: -0.03em;
+}
+
+.modelRail small {
+  display: block;
+  max-width: 17rem;
+  margin-top: 1rem;
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+.layerLegend {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-right: 1px solid rgba(166, 179, 191, 0.08);
+}
+
+.layerLegend > div {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(166, 179, 191, 0.08);
+  border-left: 1px solid rgba(166, 179, 191, 0.08);
+}
+
+.layerLegend p,
+.exampleStrip li {
+  color: rgba(39, 215, 255, 0.7);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: var(--text-tech-secondary);
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.layerLegend ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1.25rem;
+  margin-top: 0.9rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  list-style: none;
+}
+
+.layerLegend li:not(:last-child)::after {
+  margin-left: 1.25rem;
+  color: var(--text-subtle);
+  content: "/";
+}
+
+.aiLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(27rem, 1.18fr);
+  gap: clamp(3rem, 8vw, 8rem);
+}
+
+.aiNarrative p {
+  color: var(--text-secondary);
+  font-size: clamp(1rem, 1.35vw, 1.1rem);
+  line-height: 1.82;
+}
+
+.aiNarrative p + p {
+  margin-top: 1.35rem;
+}
+
+.aiPrinciples,
+.regionList,
+.workList {
+  border-top: 1px solid rgba(166, 179, 191, 0.12);
+  list-style: none;
+}
+
+.aiPrinciples li,
+.regionList li {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  gap: 1.25rem;
+  padding: 1.3rem 0.75rem;
+  border-bottom: 1px solid rgba(166, 179, 191, 0.1);
+}
+
+.aiPrinciples li > span,
+.regionList li > span,
+.workList > li > span {
+  color: var(--text-subtle);
+}
+
+.aiPrinciples h3,
+.regionList h3,
+.workList h3 {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  font-weight: 580;
+  letter-spacing: -0.015em;
+}
+
+.aiPrinciples li p {
+  margin-top: 0.45rem;
+}
+
+.aiPrinciples small,
+.regionList small {
+  display: block;
+  margin-top: 0.65rem;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.62;
+}
+
+.exampleStrip {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin-top: clamp(3rem, 5vw, 4.5rem);
+}
+
+.exampleStrip li {
+  color: var(--text-muted);
+}
+
+.exampleStrip li::before {
+  margin-right: 0.5rem;
+  color: rgba(39, 215, 255, 0.72);
+  content: "+";
+}
+
+.regionalLayout {
+  display: grid;
+  grid-template-columns: minmax(30rem, 1.1fr) minmax(22rem, 0.9fr);
+  gap: clamp(3rem, 6vw, 6rem);
+  align-items: start;
+}
+
+.regionList li p {
+  margin-top: 0.5rem;
+  color: rgba(39, 215, 255, 0.7);
+}
+
+.workList > li {
+  display: grid;
+  grid-template-columns: 2rem minmax(14rem, 0.72fr) minmax(18rem, 1.28fr) minmax(16rem, 0.8fr);
+  gap: clamp(1rem, 3vw, 3rem);
+  align-items: start;
+  padding: clamp(1.5rem, 3vw, 2.25rem) 0.75rem;
+  border-bottom: 1px solid rgba(166, 179, 191, 0.1);
+}
+
+.workList p {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+.workList small {
+  color: var(--text-muted);
+}
+
+.workAction {
+  margin-top: 2.25rem;
+}
+
+@media (max-width: 69.999rem) {
+  .domainRail {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .aiLayout,
+  .regionalLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .regionalLayout > figure {
+    max-width: 52rem;
+  }
+
+  .workList > li {
+    grid-template-columns: 2rem minmax(12rem, 0.8fr) minmax(0, 1.2fr);
+  }
+
+  .workList small {
+    grid-column: 2 / -1;
+  }
+}
+
+@media (max-width: 47.999rem) {
+  .identityGrid,
+  .layerLegend {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+
+  .identityName span {
+    font-size: 2rem;
+  }
+
+  .leadNarrative {
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  .domainRail {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 3rem;
+  }
+
+  .domainRail li {
+    min-height: 5.7rem;
+  }
+
+  .modelRail {
+    grid-template-columns: 1fr;
+  }
+
+  .modelRail > li {
+    padding: 0 0 2.75rem;
+  }
+
+  .modelRail > li:last-child {
+    padding-bottom: 0;
+  }
+
+  .modelRail > li > p {
+    margin-top: 1.15rem;
+  }
+
+  .layerLegend {
+    gap: 0;
+  }
+
+  .layerLegend li:not(:last-child)::after {
+    margin-left: 0.75rem;
+  }
+
+  .aiLayout {
+    gap: 2.75rem;
+  }
+
+  .aiPrinciples li,
+  .regionList li {
+    grid-template-columns: 1.5rem minmax(0, 1fr);
+    gap: 0.8rem;
+    padding-inline: 0.4rem;
+  }
+
+  .exampleStrip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 3rem;
+  }
+
+  .exampleStrip li:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .workList > li {
+    grid-template-columns: 1.5rem minmax(0, 1fr);
+    gap: 0.8rem;
+    padding-right: 0.4rem;
+    padding-left: 0.4rem;
+  }
+
+  .workList > li > div,
+  .workList small {
+    grid-column: 2;
+  }
+
+  .workList p,
+  .workList small {
+    margin-top: 0.75rem;
+  }
+
+  .workAction {
+    width: min(100%, 19rem);
+  }
+}

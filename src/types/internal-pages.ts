@@ -172,9 +172,30 @@ export type InsightPageContent = InternalPageContentBase & {
 
 export type AboutPageContent = InternalPageContentBase & {
   family: "about";
+  identity: {
+    fullName: string;
+    introduction: string;
+    domains: readonly string[];
+  };
   beliefs: readonly DetailItem[];
+  model: readonly DetailItem[];
+  digitalPhysical: {
+    introduction: string;
+    digitalSystems: readonly string[];
+    physicalSystems: readonly string[];
+  };
+  ai: {
+    introduction: readonly string[];
+    principles: readonly DetailItem[];
+    examples: readonly string[];
+  };
+  regions: readonly DetailItem[];
   approach: readonly ProcessItem[];
-  regionalPositioning: string;
+  work: readonly {
+    title: string;
+    description: string;
+    architecture: string;
+  }[];
 };
 
 export type InternalPageContent =
