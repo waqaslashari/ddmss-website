@@ -1,4 +1,7 @@
-export type InsightVisual = "aiGovernance" | "digitalTwins" | "smartMobility";
+import type { InsightVisualKey } from "@/types/content";
+import type { InternalIndexContent } from "@/types/internal-pages";
+
+export type InsightVisual = InsightVisualKey;
 
 export type Insight = {
   slug: string;
@@ -37,3 +40,40 @@ export const insights: readonly Insight[] = [
     visual: "smartMobility",
   },
 ] as const;
+
+export const insightsIndexContent: InternalIndexContent = {
+  family: "insight",
+  seo: {
+    title: "Insights",
+    description:
+      "Practical DDMSS perspectives on AI governance, digital twins, smart mobility and the technologies reshaping modern operations.",
+  },
+  hero: {
+    marker: "INSIGHTS / 00",
+    title: "Ideas. Insights. Impact.",
+    introduction:
+      "Perspectives on artificial intelligence, digital transformation, intelligent infrastructure and the technologies reshaping modern operations.",
+    technicalLine: "GOVERNANCE · OPERATIONS · INFRASTRUCTURE · INTELLIGENCE",
+    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Insights" }],
+  },
+  items: insights.map((insight, index) => ({
+    number: String(index + 1).padStart(2, "0"),
+    title: insight.title,
+    description: insight.summary,
+    href: insight.slug,
+    tags: [insight.category],
+    visualKey: insight.visual,
+    actionLabel: "Read Insight",
+  })),
+  finalCta: {
+    marker: "INSIGHTS / CONTINUE",
+    title: "Turn a technology question into practical direction.",
+    description:
+      "Discuss the operational context, governance and system choices behind your next technology initiative.",
+    action: { label: "Discuss This Topic", href: "/contact" },
+  },
+};
+
+export function getInsightSummary(slug: string) {
+  return insights.find((insight) => insight.slug === `/insights/${slug}`);
+}

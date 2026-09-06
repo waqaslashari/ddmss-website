@@ -1,0 +1,59 @@
+.articleBody {
+  max-width: 40rem;
+}
+
+.openingSection > p:first-of-type {
+  color: color-mix(in srgb, var(--text-primary) 68%, var(--text-secondary));
+  font-size: clamp(1.08rem, 1.45vw, 1.2rem);
+  line-height: 1.82;
+}
+
+.articleList {
+  display: grid;
+  gap: 0;
+  margin-top: 2rem;
+  border-top: 1px solid rgba(166, 179, 191, 0.12);
+  color: var(--text-secondary);
+  list-style-position: inside;
+}
+
+.articleList li {
+  padding: 1rem 0.25rem;
+  border-bottom: 1px solid rgba(166, 179, 191, 0.09);
+  font-size: 0.9875rem;
+  line-height: 1.68;
+}
+
+.articleList li::marker {
+  color: rgba(39, 215, 255, 0.66);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.75em;
+}
+
+.callout span {
+  display: block;
+  margin-bottom: 0.9rem;
+  color: rgba(39, 215, 255, 0.7);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: var(--text-tech-secondary);
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
+.callout p {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: clamp(1.05rem, 1.45vw, 1.2rem);
+  line-height: 1.68;
+}
+
+@media (max-width: 47.999rem) {
+  .articleList {
+    margin-top: 1.75rem;
+  }
+
+  .articleList li {
+    padding-block: 0.9rem;
+    font-size: 0.95rem;
+  }
+}

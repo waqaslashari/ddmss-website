@@ -1,5 +1,7 @@
 import type {
   CapabilityVisualKey,
+  InsightDiagramKey,
+  InsightVisualKey,
   IndustryVisualKey,
   SolutionVisualKey,
   WorkVisualKey,
@@ -143,18 +145,29 @@ export type ArticleSection = {
   id: string;
   title: string;
   body: readonly string[];
-  callout?: string;
-  diagramKey?: string;
+  callout?: {
+    label: string;
+    text: string;
+  };
+  list?: {
+    style: "ordered" | "unordered";
+    items: readonly string[];
+  };
+  diagramKey?: InsightDiagramKey;
 };
 
 export type InsightPageContent = InternalPageContentBase & {
   family: "insight";
+  visualKey: InsightVisualKey;
   category: string;
   publishedAt?: string;
   author?: string;
   readingTime?: string;
   sections: readonly ArticleSection[];
   relatedInsights: readonly ContentReference[];
+  relatedCapabilities: readonly ContentReference[];
+  relatedSolutions: readonly ContentReference[];
+  relatedWork: readonly ContentReference[];
 };
 
 export type AboutPageContent = InternalPageContentBase & {

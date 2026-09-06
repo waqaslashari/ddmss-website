@@ -57,6 +57,16 @@ export type WorkVisualKey =
   | "evCharging"
   | "industrialOperations";
 
+export type InsightVisualKey =
+  | "aiGovernance"
+  | "digitalTwins"
+  | "smartMobility";
+
+export type InsightDiagramKey =
+  | "aiGovernance"
+  | "digitalTwin"
+  | "smartMobility";
+
 export type Industry = {
   slug: string;
   title: string;
